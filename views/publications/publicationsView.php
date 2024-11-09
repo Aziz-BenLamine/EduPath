@@ -12,20 +12,20 @@
         <nav>
             <ul>
                 <!-- TAF INTEGRATION-->
-                <li><a href="?page=addPublication">Home</a></li>
+                <li><a href="?page=">Home</a></li>
                 <li><a href="?page=home">Forum</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <h1>Forum de discussion</h1>
-        <p>Bienvenue dans le forum!</p>
+        <p>Mathematiques</p>
         <section>
-            <h2>Sujets</h2>
+            <h2>Publications</h2>
             <ul>
-                <li><a href="?page=publication&id=1">Mathematiques</a></li>
-                <li><a href="?page=publication&id=2">Reseaux</a></li>
-                <li><a href="?page=publication&id=3">Sciences</a></li>
+                <li><a href="?page=topic&id=1">Comment resoudre cette equation ?</a></li>
+                <li><a href="?page=topic&id=2">Un corrigé pour cet exercice svp</a></li>
+                <li><a href="?page=topic&id=3">Comment puis je reviser?</a></li>
             </ul>
         </section>
 </body>
