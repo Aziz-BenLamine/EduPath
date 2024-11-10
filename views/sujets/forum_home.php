@@ -12,7 +12,7 @@
         <nav>
             <ul>
                 <!-- TAF INTEGRATION-->
-                <li><a href="?page=addPublication">Home</a></li>
+                <li><a href="?page=home">Home</a></li>
                 <li><a href="?page=home">Forum</a></li>
             </ul>
         </nav>

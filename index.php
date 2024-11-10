@@ -11,5 +11,8 @@ switch($page) {
     case "addPublication":
         include './views/publications/addPublication.php';
         break;
+    case "Responses":
+        include './views/reponses/reponsesView.php';
+        break;
 }
 
