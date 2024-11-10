@@ -1,3 +1,11 @@
+<?php
+    include_once ROOT_DIR . 'models/publication.php';
+    include_once ROOT_DIR . 'controllers/reponseC.php';
+
+    $reponseC = new reponseC();
+    $reponses = $reponseC->fetchReponsesTest();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +25,7 @@
             </ul>
         </nav>
     </header>
+    <main>
     <div class="publication">
         <h1>Comment resoudre cette equation?</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.     
@@ -29,18 +38,25 @@
     <section>
             <h2>Responses</h2>
             <ul>
-                <li>reponse1 reponse1 reponse1 reponse1 reponse1</a></li>
-                <li>reponse2 reponse2 reponse2 reponse2 reponse2</a></li>
-                <li>reponse3 reponse3 reponse3 reponse3 reponse3</a></li>
+                <?php foreach($reponses as $reponse): ?>
+                    <li>
+                        <div class="name-date">
+                            <h4><?= $reponse->getCreePar() ?></h4>
+                            <div><?=$reponseC->timeAgo($reponse->getDateCreation())?></div>
+                        </div>
+                        <p><?= $reponse->getContenu()?></p>
+                    </li>
+                <?php endforeach ?>     
             </ul>
     </section>
     
     <div class="add-response">
-        <h2>Add a Response</h2>
+        <h2>Rependre</h2>
         <form>
-            <textarea name="response" rows="4" cols="50" placeholder="Write your response here..."></textarea><br>
-            <button type="submit">Submit</button>
+            <textarea name="response" rows="4" cols="50" placeholder="Ecrire votre response ici..."></textarea><br>
+            <button type="submit" class="response-btn">Rependre</button>
         </form>
     </div>
+    </main>
 </body>
 </html>

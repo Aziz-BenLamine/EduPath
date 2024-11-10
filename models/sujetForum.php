@@ -25,10 +25,10 @@ class SujetForum
     }
 
     // Methode supprimerSujet()
-    public function __destruct()
+    /*public function __destruct()
     {
         echo "Le sujet a été supprimer";
-    }
+    }*/
     
 
     //Getters

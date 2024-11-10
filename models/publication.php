@@ -28,10 +28,10 @@ class Publication {
     }
 
     // Methode supprimerPublication()
-    public function __destruct()
+    /*public function __destruct()
     {
         echo "La publication a été supprimer";
-    }
+    }*/
 
     //Getters
     public function getId()

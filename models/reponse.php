@@ -23,10 +23,10 @@ class reponse {
     }
 
     // Methode supprimerReponse()
-    public function __destruct()
+    /*public function __destruct()
     {
         echo "La reponse a été supprimer";
-    }
+    }*/
 
     //Getters
     public function getId()

@@ -4,28 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nouvelle Publication</title>
-    <link rel="stylesheet" type="text/css" href="./css/forum_home.css">
+    <link rel="stylesheet" type="text/css" href="./css/addForm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+        <div class="logo-container">
+            <img src="views/sujets/logoBG.png" alt="EduPathLogo" class="logo">
+        </div>
         <nav>
             <ul>
-                <!-- TAF INTEGRATION-->
                 <li><a href="?page=home">Home</a></li>
-                <li><a href="?page=home">Forum</a></li>
+                <li><a href="?page=forum">Forum</a></li>
             </ul>
         </nav>
     </header>
-    <h1>Nouvelle Publication</h1>
-    <form action="submitPublication.php" method="post">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
-        
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
-        
-        <input type="submit" value="Submit">
-    </form>
+    
+    <main>
+        <section class="form-section">
+            <h1>Nouvelle Publication</h1>
+            <form action="submitPublication.php" method="post">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </section>
+    </main>
+
 </body>
 </html>

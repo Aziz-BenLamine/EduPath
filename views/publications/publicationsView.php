@@ -1,3 +1,9 @@
+<?php 
+    require_once ROOT_DIR . "controllers/publicationC.php";
+    $publicationC = new publicationC();
+    $publications = $publicationC->fetchPublicationsTest();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +32,15 @@
                 <a href="?page=addPublication" class="add-button">Nouvelle publication</a>
             </div>
             <ul>
-                <li><a href="?page=Responses&id=1">Comment resoudre cette equation ?</a></li>
-                <li><a href="?page=Responses&id=2">Un corrigé pour cet exercice svp</a></li>
-                <li><a href="?page=Responses&id=3">Comment puis je reviser?</a></li>
+                <?php foreach($publications as $publication):?>
+                    <li>
+                        <div class="name-date">
+                            <h4><?= $publication->getCreePar()  ?></h4>
+                            <div><?= $publicationC->timeAgo($publication->getDateCreation())?></div>
+                        </div>
+                        <a href="?page=Responses&id=<?= $publication->getId()?>"><?= $publication->getTitre()?></a>
+                    </li>
+                <?php endforeach ?>
             </ul>
         </section>
 </body>
