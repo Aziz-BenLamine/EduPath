@@ -9,8 +9,9 @@
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="views/sujets/logoBG.png" alt="EduPathLogo" class="logo">
+        <div class="logo-name">
+            <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+            <h3>EduPath</h3>
         </div>
         <nav>
             <ul>
@@ -31,7 +32,7 @@
                 
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <textarea id="description" name="description"  required></textarea>
                 </div>
                 
                 <div class="form-group">

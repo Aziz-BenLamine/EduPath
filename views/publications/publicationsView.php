@@ -45,45 +45,16 @@
     <title>Forum</title>
     <link rel="stylesheet" type="text/css" href="./css/forum_home.css">
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            margin: 0;
-        }
-        .container {
-            display: flex;
-            flex: 1;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #f4f4f4;
-            padding: 15px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
-        .sidebar h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #333;
-        }
-        .main-content {
-            flex: 1;
-            padding: 20px;
-        }
+
+
     </style>
 </head>
 <body>
     <header>
-        <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+        <div class="logo-name">
+            <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+            <h3>EduPath</h3>
+        </div>
         <nav>
             <ul>
                 <li><a href="?page=home">Home</a></li>

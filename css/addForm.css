@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+.logo-name {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f9f9f9;
@@ -69,7 +75,6 @@ main {
 label {
   font-weight: 500;
   color: #264653;
-  display: block;
   margin-bottom: 8px;
 }
 

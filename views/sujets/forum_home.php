@@ -43,7 +43,10 @@ $sujets = [
 </head>
 <body>
     <header>
-        <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+        <div class="logo-name">
+            <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+            <h3>EduPath</h3>
+        </div>
         
         <nav>
             <ul>
