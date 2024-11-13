@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduPath</title>
-  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href=<?="/Edupath/css/home.css" ?>>
 </head>
 <body>
 
@@ -34,12 +34,12 @@
       <div class="course-list">
         <?php for ($i = 1; $i <= 3; $i++): ?>
         <div class="course-card">
-          <img src="/courseThumbnail.png" alt="Vignette du cours" class="course-thumbnail">
+          <img src="/Edupath/courseThumbnail.png" alt="Vignette du cours" class="course-thumbnail">
           <span class="badge">Meilleure vente</span>
           <h3>Cours complet de développement web</h3>
           <div class="course-info">
             <div class="tuteur">            
-              <img src="user.png" alt="Instructeur" class="avatar">
+              <img src="/Edupath/user.png" alt="Instructeur" class="avatar">
               <span>John Smith</span>
             </div>
 
@@ -84,7 +84,7 @@
         <div class="testimonial-card">
           <div class="testimonial-header">
             <div class="nameImageRole">            
-              <img src="user.png" alt="Étudiant" class="avatar2">
+              <img src="/Edupath/user.png" alt="Étudiant" class="avatar2">
               <div class="testimonial-name">
                 <h3>Sarah Johnson</h3>
                 <p>Étudiante en développement web</p>

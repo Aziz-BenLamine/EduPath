@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduPath</title>
-  <link rel="stylesheet" href="/views/components/header.css">
+  <link rel="stylesheet" href="/Edupath/views/components/header.css">
 </head>
 <body>
   <header class="header">
     <a href="#" class="logo">
-      <img src="/views/components/EduPathLogo.png" alt="CheminÉdu Logo">
+      <img src="/Edupath/views/components/EduPathLogo.png" alt="CheminÉdu Logo">
       <span>EduPath</span>
     </a>
     <nav class="nav">
