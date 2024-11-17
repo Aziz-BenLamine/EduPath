@@ -10,7 +10,7 @@
 
 <div class="container">
   <!-- Header -->
-  <?php include ROOT_DIR.'views/components/header.php'; ?>*
+  <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
   
   <!-- Main content -->
   <main>

@@ -1,7 +1,24 @@
 <?php
-require_once ROOT_DIR . "models/publication.php";
-
+require_once "/xampp/htdocs/EduPath/models/publication.php";
+require_once "/xampp/htdocs/EduPath/config.php";
 class publicationC {
+    private $pdo;
+
+    public function __construct() {
+        $this->pdo = config::getConnexion();
+    }
+
+    public function listPublications($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM publication WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getPublication($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM publication WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     public function fetchPublicationsTest() {
         $publications = [

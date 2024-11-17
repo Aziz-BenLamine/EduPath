@@ -1,11 +1,22 @@
 <?php
-    include_once ROOT_DIR . 'models/publication.php';
-    include_once ROOT_DIR . 'controllers/reponseC.php';
+    include_once '/xampp/htdocs/EduPath/controllers/publicationC.php';
+    include_once '/xampp/htdocs/EduPath/controllers/reponseC.php';
 
+    include_once '/xampp/htdocs/EduPath/controllers/sujetForumC.php';
+    $sujetsC = new sujetForumC();
+    $sujets = $sujetsC->listSujets();
+
+    //Publications
+    $id_publication = $_GET['id'];
+    $publicationC = new publicationC();
+    $publication = $publicationC->getPublication($id_publication);
+    //Reponses
+   
     $reponseC = new reponseC();
-    $reponses = $reponseC->fetchReponsesTest();
+    $reponses = $reponseC->listreponses($id_publication);
+    //$reponses = $reponseC->fetchReponsesTest();
 
-    $sujets = [
+    /*$sujets = [
         1 => "Mathematiques",
         2 => "Reseaux",
         3 => "Sciences",
@@ -36,7 +47,7 @@
         28 => "Cuisine",
         29 => "Voyages",
         30 => "Photographie"
-    ];
+    ];*/
 ?>
 
 <!DOCTYPE html>
@@ -45,43 +56,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comment resoudre cette equation?</title>
-    <link rel="stylesheet" type="text/css" href="./css/forum_home.css">
+    <link rel="stylesheet" type="text/css" href="/Edupath/css/forum_home.css">
     <style>
 
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo-name">
-            <img src="views/sujets/logoBG.png" alt="EduPathLogo">
-            <h3>EduPath</h3>
-        </div>
-        <nav>
-            <ul>
-                <!-- TAF INTEGRATION-->
-                <li><a href="?page=home">Home</a></li>
-                <li><a href="?page=home">Forum</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
     <div class="container">
         <div class="sidebar">
             <h2>Sujets</h2>
             <ul>
-                <?php foreach($sujets as $id => $sujet): ?>
-                    <li><a href="?page=publication&id=<?= $id ?>"><?= $sujet ?></a></li>
+                <?php foreach($sujets as $sujet): ?>
+                    <li><a href="?page=publication&id=<?= $sujet['id'] ?>"><?= $sujet['title'] ?></a></li>
                 <?php endforeach ?>
             </ul>
         </div>
         
         <main>
             <div class="publication">
-                <h1>Comment resoudre cette equation?</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.     
-                Culpa unde maiores, dolore possimus, ratione libero modi dolor
-                perspiciatis animi distinctio molestias corrupti inventore repellat
-                enim alias quam? Eligendi, tempore iste.
-                </p>
+                <h1><?= $publication['titre'] ?> </h1>
+                <p><?= $publication['contenu'] ?> </p>
             </div>
 
             <section>
@@ -90,10 +85,10 @@
                         <?php foreach($reponses as $reponse): ?>
                             <li>
                                 <div class="name-date">
-                                    <h4><?= $reponse->getCreePar() ?></h4>
-                                    <div><?=$reponseC->timeAgo($reponse->getDateCreation())?></div>
+                                    <h4><?= $reponse['cree_par'] ?></h4>
+                                    <div><?=$reponseC->timeAgo($reponse['date_creation'])?></div>
                                 </div>
-                                <p><?= $reponse->getContenu()?></p>
+                                <p><?= $reponse['contenu']?></p>
                             </li>
                         <?php endforeach ?>     
                     </ul>

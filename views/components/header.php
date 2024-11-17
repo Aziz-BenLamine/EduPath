@@ -8,14 +8,14 @@
 </head>
 <body>
   <header class="header">
-    <a href="#" class="logo">
+    <a href="/Edupath/index.php" class="logo">
       <img src="/Edupath/views/components/EduPathLogo.png" alt="CheminÉdu Logo">
       <span>EduPath</span>
     </a>
     <nav class="nav">
       <a href="#">Cours</a>
       <a href="#">Quiz</a>
-      <a href="#">Forum</a>
+      <a href="/Edupath/views/sujets/forum_home.php">Forum</a>
       <a href="#">Enseigner</a>
       <a href="#">Reclamation</a>
       <a href="#">Se connecter</a>

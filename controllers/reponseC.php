@@ -1,8 +1,27 @@
 <?php
-include_once ROOT_DIR . 'models/reponse.php';
+include_once '/xampp/htdocs/EduPath/models/reponse.php';
+require_once "/xampp/htdocs/EduPath/config.php";
 
 class reponseC
 {
+    private $pdo;
+
+    public function __construct() {
+        $this->pdo = config::getConnexion();
+    }
+
+    public function listreponses($id_publication) {
+        $stmt = $this->pdo->prepare("SELECT * FROM reponse WHERE publication = :id_publication");
+        $stmt->execute(['id_publication' => $id_publication]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function creePar($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM utilisateur WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function fetchReponsesTest()
     {
         $reponses = [

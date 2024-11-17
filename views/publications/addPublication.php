@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nouvelle Publication</title>
-    <link rel="stylesheet" type="text/css" href="./css/addForm.css">
+    <link rel="stylesheet" type="text/css" href="/Edupath/css/addForm.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <!--<header>
         <div class="logo-name">
-            <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+            <img src="/EduPath/views/sujets/logoBG.png" alt="EduPathLogo">
             <h3>EduPath</h3>
         </div>
         <nav>
@@ -19,8 +19,8 @@
                 <li><a href="?page=forum">Forum</a></li>
             </ul>
         </nav>
-    </header>
-    
+    </header>-->
+    <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
     <main>
         <section class="form-section">
             <h1>Nouvelle Publication</h1>

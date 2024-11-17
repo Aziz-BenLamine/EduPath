@@ -40,19 +40,6 @@ body {
   padding: 20px;
 }
 
-header {
-  background-color: #4ea0b5;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header img {
-  height: 50px;
-  margin-left: 20px;
-}
-
 nav ul {
   list-style: none;
   margin: 0;

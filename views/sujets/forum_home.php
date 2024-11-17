@@ -1,5 +1,5 @@
 <?php
-$sujets = [
+/*$sujets = [
     1 => "Mathematiques",
     2 => "Reseaux",
     3 => "Sciences",
@@ -30,7 +30,12 @@ $sujets = [
     28 => "Cuisine",
     29 => "Voyages",
     30 => "Photographie"
-];
+];*/
+
+include_once '/xampp/htdocs/EduPath/controllers/sujetForumC.php';
+$sujetsC = new sujetForumC();
+$sujets = $sujetsC->listSujets();
+
 ?>
 
 <!DOCTYPE html>
@@ -39,23 +44,25 @@ $sujets = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum</title>
-    <link rel="stylesheet" type="text/css" href="./css/forum_home.css">
+    <link rel="stylesheet" type="text/css" href="/Edupath/css/forum_home.css">
 </head>
 <body>
-    <header>
+    <!--<header>
         <div class="logo-name">
-            <img src="views/sujets/logoBG.png" alt="EduPathLogo">
+            <img src="/Edupath/views/sujets/logoBG.png" alt="EduPathLogo">
             <h3>EduPath</h3>
         </div>
         
         <nav>
             <ul>
-                <!-- TAF INTEGRATION-->
+                
                 <li><a href="?page=home">Home</a></li>
                 <li><a href="?page=home">Forum</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
+
+    <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
     <main>
         <h1>Forum de discussion</h1>
         <p>Bienvenue dans le forum!</p>
@@ -63,8 +70,12 @@ $sujets = [
 
             <h2>Sujets</h2>
             <ul class="grid-list">
-                <?php foreach($sujets as $id => $sujet): ?>
-                    <li><a href="?page=publication&id= <?= $id ?>"> <?= $sujet ?> </a></li>
+                <?php foreach($sujets as $sujet): ?>
+                    <li>
+                        <a href="/Edupath/views/publications/publicationsView.php?id=<?= $sujet['id'] ?>">
+                            <?= $sujet['title'] ?>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
 
