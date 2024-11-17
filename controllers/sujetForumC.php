@@ -20,5 +20,11 @@ class sujetForumC {
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function countSujets() {
+        $stmt = $this->pdo->query("SELECT COUNT(*) as count FROM sujetforum");
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'];
+    }
 }
 ?>

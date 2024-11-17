@@ -31,6 +31,22 @@ class publicationC {
         $stmt->execute(['id' => $id]);
     }
 
+    public function updatePublication($data) {
+        $sql = "UPDATE publication SET titre = :titre, contenu = :contenu WHERE id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':titre' => $data['title'],
+                        ':contenu' => $data['description'],
+                        ':id' => $data['id']
+                      ]);
+    }
+
+    //STATS
+    public function countPublications() {
+        $stmt = $this->pdo->query("SELECT COUNT(*) as count FROM publication");
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'];
+    }
+    
     public function timeAgo($datetime)
     {
         $time = strtotime($datetime);

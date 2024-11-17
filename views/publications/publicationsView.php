@@ -56,7 +56,9 @@
                             <a class="supprimer-modifier"
                                href="/Edupath/views/publications/supprimerPublication.php?id=<?php echo $publication['id']?>
                                                                                          &id_sujet=<?php echo $id_sujet ?>">Supprimer</a>
-                            <a class="supprimer-modifier" href="">Modifier</a>
+                            <a class="supprimer-modifier"
+                               href="/Edupath/views/publications/modifierPublication.php?id=<?php echo $publication['id'] ?>
+                                                                                         &id_sujet=<?php echo $id_sujet ?>">Modifier</a>
                         </li>
                     <?php endforeach; ?>
                 </ul>

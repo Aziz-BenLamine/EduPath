@@ -26,6 +26,12 @@ class reponseC
         $stmt = $this->pdo->prepare("INSERT INTO reponse (contenu, date_creation, cree_par, publication) VALUES (:contenu, :date_creation, :cree_par, :publication)");
         $stmt->execute($reponse);
     }
+    
+    public function countReponses() {
+        $stmt = $this->pdo->query("SELECT COUNT(*) as count FROM reponse");
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'];
+    }
 
     public function timeAgo($datetime)
     {
