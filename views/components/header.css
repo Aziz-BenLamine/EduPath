@@ -1,14 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-}
-header {
   font-family: "Poppins", sans-serif;
+}
+
+header {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
 }
 
 .logo {
@@ -31,6 +33,7 @@ header {
   display: flex;
   align-items: center;
 }
+
 .nav a {
   color: #1a3d6f;
   text-decoration: none;
@@ -46,9 +49,6 @@ header {
 .btn-primary {
   background-color: #ffd700;
   color: #1a3d6f;
-}
-
-.btn-primary {
   padding: 14px 28px;
   border-radius: 6px;
   margin: 10px;

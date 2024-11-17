@@ -17,7 +17,7 @@
       <a href="#">Quiz</a>
       <a href="#">Forum</a>
       <a href="#">Enseigner</a>
-      <a href="#">Reclamation</a>
+      <a href="../../../réclamation/views/Frontoffice">Reclamation</a>
       <a href="#">Se connecter</a>
       <a href="#" class="btn-primary">S'inscrire</a>
     </nav>
