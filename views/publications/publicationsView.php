@@ -33,7 +33,7 @@
             <h2>Sujets</h2>
             <ul>
                 <?php foreach($sujets as $sujet): ?>
-                    <li><a href="?page=publication&id=<?= $sujet['id'] ?>"><?= $sujet['title'] ?></a></li>
+                    <li><a href="/Edupath/views/publications/publicationsView.php?id=<?= $sujet['id'] ?>"><?= $sujet['title'] ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -43,7 +43,7 @@
             <section>
                 <div class="publication-add">
                     <h2>Publications</h2>
-                    <a href="/Edupath/views/publications/addPublication.php" class="add-button">Nouvelle publication</a>
+                    <a href="/Edupath/views/publications/addPublication.php?id_sujet=<?=$id_sujet ?>" class="add-button">Nouvelle publication</a>
                 </div>
                 <ul>
                     <?php foreach($publications as $publication): ?>
