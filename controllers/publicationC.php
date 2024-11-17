@@ -26,6 +26,11 @@ class publicationC {
         $stmt->execute($publication);
     }
 
+    public function deletePublication($id) {
+        $stmt = $this->pdo->prepare("DELETE FROM publication WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+    }
+
     public function timeAgo($datetime)
     {
         $time = strtotime($datetime);

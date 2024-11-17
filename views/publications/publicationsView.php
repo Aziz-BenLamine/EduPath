@@ -53,6 +53,10 @@
                                 <div><?= $publicationC->timeAgo($publication['date_creation']) ?></div>
                             </div>
                             <a href="/Edupath/views/reponses/reponsesView.php?id=<?= $publication['id'] ?>"><?= $publication['contenu'] ?></a>
+                            <a class="supprimer-modifier"
+                               href="/Edupath/views/publications/supprimerPublication.php?id=<?php echo $publication['id']?>
+                                                                                         &id_sujet=<?php echo $id_sujet ?>">Supprimer</a>
+                            <a class="supprimer-modifier" href="">Modifier</a>
                         </li>
                     <?php endforeach; ?>
                 </ul>

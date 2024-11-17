@@ -193,3 +193,7 @@ textarea {
 h3 {
   color: #fff;
 }
+
+.supprimer-modifier:hover {
+  color: red;
+}

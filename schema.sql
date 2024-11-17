@@ -33,5 +33,5 @@ CREATE TABLE Reponse (
     cree_par INT NOT NULL,
     publication INT NOT NULL,
     FOREIGN KEY (cree_par) REFERENCES Utilisateur(id),
-    FOREIGN KEY (publication) REFERENCES Publication(id)
+    FOREIGN KEY (publication) REFERENCES Publication(id) ON DELETE CASCADE;
 );
