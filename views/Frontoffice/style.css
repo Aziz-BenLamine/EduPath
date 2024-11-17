@@ -55,3 +55,8 @@ h2 {
 .btn:hover {
     background-color: #004494; /* Bleu encore plus foncé au survol */
 }
+.error {
+    color: red;
+    margin-bottom: 15px;
+    text-align: center;
+}
