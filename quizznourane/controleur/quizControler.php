@@ -1,6 +1,6 @@
 <?php
-include 'C:\xampp\htdocs\quizznourane\config.php';
-require_once __DIR__ . 'C:\xampp\htdocs\quizznourane\model\quizModel.php';
+include '../../quizznourane/config.php';
+include '../../quizznourane/model/quizModel.php';
 
 
 class quizs {

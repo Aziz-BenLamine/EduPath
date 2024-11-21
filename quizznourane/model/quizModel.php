@@ -3,16 +3,75 @@
 /*class Quiz {
     private $id;
     private $titre;
-    private $description;
+    private $descrpt;
     private $creationDate;
     private $difficulte;
     private $categorie;
-    private $questions;
 
 
-    public function ajouterQuestion(Question $question) {
-        $this->questions[] = $question;
+    public function getIdqz()
+    {
+        return $this->idqz;
     }
+    public function setIdqz($idqz)
+    {
+        $this->idqz = $idqz;
+
+        return $this;
+    }
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+    public function setTitre($titre)
+    {
+        $this->titre= $titre;
+
+        return $this;
+    }
+    public function getDescrpt()
+    {
+        return $this->descrpt;
+    }
+    public function setDescrpt($descrpt)
+    {
+        $this->descrpt = $descrpt;
+
+        return $this;
+    }
+    
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }public function getDifficulte()
+    {
+        return $this->difficulte;
+    }
+    public function setDifficulte($difficulte)
+    {
+        $this->difficulte = $difficulte;
+
+        return $this;
+  
+    }
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+}
+
 }*/
 
 class Question {
@@ -55,12 +114,51 @@ class Question {
 
 
 }
-
 /*class Reponse {
-    private $id;
-    private $reponseText;
+    private $idr;
+    private $reponse;
     private $score;
     private $correction;
-    private $question;
+
+    public function getIdr()
+    {
+        return $this->idr;
+    }
+    public function setIdq($idr)
+    {
+        $this->idr = $idr;
+
+        return $this;
+    }
+    public function getReponse()
+    {
+        return $this->reponse;
+    }
+    public function setReponse($reponse)
+    {
+        $this->reponse= $reponse;
+
+        return $this;
+    }
+    public function getScore()
+    {
+        return $this->score;
+    }
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+    public function getCorrection()
+    {
+        return $this->correction;
+    }
+    public function setCorrection($correction)
+    {
+        $this->correction = $correction;
+
+        return $this;
+    }
 }*/
  ?>

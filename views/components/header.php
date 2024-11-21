@@ -14,7 +14,7 @@
     </a>
     <nav class="nav">
       <a href="#">Cours</a>
-      <a href="C:\xampp\htdocs\EduPath\quizznourane">Quiz</a>
+      <a href="..\EduPath\quizznourane\view\index.html">Quiz</a>
       <a href="#">Forum</a>
       <a href="#">Enseigner</a>
       <a href="#">Reclamation</a>

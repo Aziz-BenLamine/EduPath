@@ -1,5 +1,5 @@
 <?php
-include('../controleur/quizControler.php');
+include('..\quizznourane\controleur\quizControler.php');
 
 $quizController = new quizs();
 $questions = $quizController->affichequestion();

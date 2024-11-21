@@ -1,6 +1,6 @@
 <?php
-require_once('C:\xampp\htdocs\quizznourane\model\quizModel.php');
-require_once('C:\xampp\htdocs\quizznourane\controleur\quizControler.php');
+include '../../quizznourane/model/quizModel.php';
+include '../../quizznourane/controleur/quizControler.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $typeq = $_POST['typeq'];}
 
     
-    $question = new Question();
+    $question = new question();
     $question->setIdq($idq);
     $question->setQuestion($questionText);
     $question->setTypeq($typeq);
