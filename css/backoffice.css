@@ -1,0 +1,20 @@
+/* STYLE A AJOUTER POUR CHAQUE PAGE DU BACKOFFICE*/
+.content {
+  margin-left: 250px;
+  padding: 30px;
+  background-color: #f8f9fa;
+  transition: margin-left 0.3s ease;
+}
+
+.content.shifted {
+  margin-left: 0;
+}
+h1 {
+  font-size: 30px;
+  color: #495057;
+}
+p {
+  font-size: 16px;
+  color: #212529;
+  line-height: 1.5;
+}
