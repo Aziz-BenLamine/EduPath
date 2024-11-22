@@ -1,3 +1,8 @@
+<?php
+require_once '../../Controller/categoriescontroller.php';
+$CategoriesController = new CategoriesController();
+$categories = $CategoriesController->affichercategories();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,46 +30,16 @@
         <h1>Gestion de Mes Cours</h1>
         
         <div id="courses" class="courses-container">
-            <?php
-            require_once '../../Controller/courscontroller.php';
-            $CoursController = new CoursController();
-            $CoursController->affichercours();
-            ?>
+        <?php foreach ($categories as $categorie) : ?>
+        <div class="course">
+            <h2><?php echo $categorie['titre']; ?></h2>
+            <p><?php echo $categorie['description']; ?></p>
+            <a class="blue-button" href="courstuteur.php?id=<?php echo $categorie['id'] ?>">afficher mes cours</a>
+            
+            
         </div>
-
-        <form class="form-container" id="courseForm" style="display: none;" action="ajoutercours.php" method="post">
-            <h2 id="formTitle">Ajouter un Cours</h2>
-            <input type="text" id="courseTitle" name="courseTitle" placeholder="Titre du cours" required>
-            <textarea id="courseDescription" name="courseDescription" placeholder="Description du cours" required></textarea>
-            <input type="text" id="courseLevel" name="courseLevel" placeholder="Niveau (Débutant, Intermédiaire, Avancé)" required>
-            <input type="text" id="coursePrice" name="coursePrice" placeholder="Prix (ex: Gratuit, 50Dt)" required>
-            <input type="text" id="courseCategory" name="courseCategory" placeholder="Catégorie du cours" required>
-            <button type="submit">Enregistrer</button>
-            <button type="button" onclick="cancelAdd()">Annuler</button>
-        </form>
-        <form class="form-container" id="deleteCourseForm" style="display: none;" action="supprimercours.php" method="post">
-            <h2>Supprimer un Cours</h2>
-            <input type="text" id="deleteCourseId" name="courseId" placeholder="ID du cours" required>
-            <button type="submit">Supprimer</button>
-            <button type="button" onclick="cancelDelete()">Annuler</button>
-        </form>
-
-        <form class="form-container" id="editCourseForm" style="display: none;" action="modifiercours.php" method="post">
-            <h2>Modifier un Cours</h2>
-            <input type="text" id="editCourseId" name="courseId" placeholder="ID du cours" required>
-            <input type="text" id="editCourseTitle" name="courseTitle" placeholder="Titre du cours" required>
-            <textarea id="editCourseDescription" name="courseDescription" placeholder="Description du cours" required></textarea>
-            <input type="text" id="editCourseLevel" name="courseLevel" placeholder="Niveau (Débutant, Intermédiaire, Avancé)" required>
-            <input type="text" id="editCoursePrice" name="coursePrice" placeholder="Prix (ex: Gratuit, 50Dt)" required>
-            <input type="text" id="editCourseCategory" name="courseCategory" placeholder="Catégorie du cours" required>
-            <button type="submit">Enregistrer</button>
-            <button type="button" onclick="cancelEdit()">Annuler</button>
-        </form>
-
-        <div style="text-align: center; margin-top: 20px;">
-            <button class="blue-button" onclick="addNewCourse()">Ajouter un Nouveau Cours</button>
-            <button class="blue-button" onclick="showDeleteCourseModal()">Supprimer un Cours</button>
-            <button class="blue-button" onclick="showEditCourse()">Modifier un Cours</button>
+        
+    <?php endforeach; ?>
         </div>
     </main>
 

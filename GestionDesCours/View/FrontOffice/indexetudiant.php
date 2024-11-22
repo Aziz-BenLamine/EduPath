@@ -1,3 +1,8 @@
+<?php
+require_once '../../Controller/categoriescontroller.php';
+$CategoriesController = new CategoriesController();
+$categories = $CategoriesController->affichercategories();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,23 +30,15 @@
     </nav>
   </header>
     <main>
-        <h1>Liste des Cours</h1>
-        <div class="filter">
-            <label for="categoryFilter">Filtrer par catégorie:</label>
-            <select id="categoryFilter" onchange="filterCourses()">
-                <option value="all">Toutes</option>
-                <option value="informatique">Informatique</option>
-                <option value="math">Mathématiques</option>
-                <option value="science">Science</option>
-            </select>
-        </div>
+        <h1>Liste des Categories</h1>
         <div id="courses" class="courses-container">
-        <?php
-            require_once '../../Controller/courscontroller.php';
-            $CoursController = new CoursController();
-            $CoursController->affichercours();
-            ?>
+        <?php foreach ($categories as $categorie) : ?>
+        <div class="course">
+            <h2><?php echo $categorie['titre']; ?></h2>
+            <p><?php echo $categorie['description']; ?></p>
+            <a class="blue-button" href="coursetudiant.php?id=<?php echo $categorie['id'] ?>">afficher les cours</a>
         </div>
+        <?php endforeach; ?>
     </main>
   <script src="script.js"></script>
   <!-- Footer -->

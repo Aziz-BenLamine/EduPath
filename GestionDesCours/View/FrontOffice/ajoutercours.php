@@ -13,5 +13,5 @@ require_once '../../Controller/courscontroller.php';
 
     $courseController = new CoursController();
     $courseController->ajoutercours($cours);
-    header('Location: indextuteur.php');
+    header('Location: courstuteur.php?id='.$_POST['courseCategory']);
 ?>
