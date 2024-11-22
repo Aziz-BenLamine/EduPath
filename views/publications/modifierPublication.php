@@ -22,19 +22,19 @@
 
                 if (!$publication) {
                     echo "<p>Publication not found.</p>";
-                    exit();
+                    //exit();
                 }
             ?>
             <form action="updatePublication.php?id=<?php echo $id_publication ?>&id_sujet=<?php echo $id_sujet ?>" method="post">
                 <div id="error-message" style="color: red;"></div>
                 <div class="form-group">
                     <label for="title">Titre:</label>
-                    <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($publication['titre']); ?>" required>
+                    <input type="text" id="title" name="title" value="<?php echo $publication['titre']; ?>" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea id="description" name="description" required><?php echo htmlspecialchars($publication['contenu']); ?></textarea>
+                    <textarea id="description" name="description" required><?php echo $publication['contenu']; ?></textarea>
                 </div>
 
                 <button type="submit">Modifier</button>
