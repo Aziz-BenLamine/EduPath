@@ -8,6 +8,12 @@ class publicationC {
         $this->pdo = config::getConnexion();
     }
 
+    public function publicationTable() {
+        $stmt = $this->pdo->query("SELECT * FROM publication");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //CRUD
     public function listPublications($id) {
         $stmt = $this->pdo->prepare("SELECT * FROM publication WHERE sujet = :id");
         $stmt->execute(['id' => $id]);

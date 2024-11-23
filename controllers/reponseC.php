@@ -10,6 +10,17 @@ class reponseC
         $this->pdo = config::getConnexion();
     }
 
+    public function reponseTable() {
+        $stmt = $this->pdo->query("SELECT * FROM reponse");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getReponse($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM reponse WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function listreponses($id_publication) {
         $stmt = $this->pdo->prepare("SELECT * FROM reponse WHERE publication = :id_publication");
         $stmt->execute(['id_publication' => $id_publication]);
@@ -25,6 +36,16 @@ class reponseC
     public function addReponse($reponse) {
         $stmt = $this->pdo->prepare("INSERT INTO reponse (contenu, date_creation, cree_par, publication) VALUES (:contenu, :date_creation, :cree_par, :publication)");
         $stmt->execute($reponse);
+    }
+
+    public function updateReponse($reponse) {
+        $stmt = $this->pdo->prepare("UPDATE reponse SET contenu = :contenu WHERE id = :id");
+        $stmt->execute($reponse);
+    }
+
+    public function deleteReponse($id) {
+        $stmt = $this->pdo->prepare("DELETE FROM reponse WHERE id = :id");
+        $stmt->execute(['id' => $id]);
     }
     
     public function countReponses() {
