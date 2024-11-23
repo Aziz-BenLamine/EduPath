@@ -56,32 +56,31 @@ function validateCategoryForm() {
         alert('Veuillez remplir tous les champs.');
         return false;
     }
-    return true;
-}
-
-function validateDeleteCategoryForm() {
-    const id = document.getElementById('id').value;
-    if (id.trim() === '') {
-        alert('Veuillez entrer un ID de catégorie.');
+    if (/^[^0-9]*$/.test(title)) {
+        return true;
+    } else {
+        alert('Le titre ne doit pas contenir de chiffres.');
         return false;
     }
-    return true;
 }
-
-/*function validateEditCategoryForm() {
-    const id = document.getElementById('id').value;
+function validateEditCategoryForm() {
     const title = document.getElementById('titre').value;
     const description = document.getElementById('description').value;
-    if (id.trim() === '' || title.trim() === '' || description.trim() === '') {
+    console.log(title);
+    console.log(description);
+    if (title.trim() === '' || description.trim() === '') {
         alert('Veuillez remplir tous les champs.');
         return false;
     }
-    return true;
-}*/
+    if (/^[^0-9]*$/.test(title)) {
+        return true;
+    } else {
+        alert('Le titre ne doit pas contenir de chiffres.');
+        return false;
+    }
+}
 
 document.getElementById('categoryForm').onsubmit = validateCategoryForm;
-document.getElementById('deleteCategoryForm').onsubmit = validateDeleteCategoryForm;
-document.getElementById('editCategoryForm').onsubmit = validateEditCategoryForm;
 
 function toggleSidebar() {
     document.querySelector('.sidebar').classList.toggle('hidden');

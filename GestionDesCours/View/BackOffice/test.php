@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
         <div class="category">
             <h2><?php echo $categorie['titre']; ?></h2>
             <p><?php echo $categorie['description']; ?></p>
-            <a class="blue-button" onclick=showeditCategory()>Modifier<a>
+            <a class="blue-button" >Modifier<a>
             <a class="blue-button" href="supprimercategorie.php?id=<?php echo $categorie['id']?>">Supprimer</a>
             
         </div>
@@ -53,22 +53,9 @@ if (isset($_GET['id'])) {
         </div>
     </main>
 
-    <div id="categoryModal" class="modal" >
-        <div class="modal-content">
-            <button class="close" onclick="closeModal()" onKeyDown="if(event.key === 'Enter' || event.key === ' ') closeModal()">&times;</button>
-            
-            <form class="form-container" id="categoryForm" method="post" action="ajoutercategories.php">
-                <h2 id="formTitle">Ajouter une Catégorie</h2>
-                <input type="text" id="categoryTitle" name="categoryTitle" placeholder="Nom de la catégorie" >
-                <textarea id="categoryDescription" name="categoryDescription" placeholder="Description de la catégorie" ></textarea>
-                <button type="submit" class="blue-button">Enregistrer</button>
-                <button type="button" class="blue-button" onclick="cancelEdit()">Annuler</button>
-            </form>
-        </div>
-    </div>
     <div id="edit" class="modal" style="display: block;">
                 <div class="modal-content">
-                    <button class="close" onclick="cancelEdit()" onKeyDown="if(event.key === 'Enter' || event.key === ' ') cancelEdit()">&times;</button>
+                    <a class="close" onclick="cancelEdit()" onKeyDown="if(event.key === 'Enter' || event.key === ' ') cancelEdit()" href="indexadmin.php">&times;</a>
                     
                     <form class="form-container" id="editCategoryForm" method="post" action="modifiercategorie.php">
                         <h2 id="editFormTitle">Modifier une Catégorie</h2>
@@ -90,7 +77,7 @@ if (isset($_GET['id'])) {
     echo "<p style='color: blue; font-weight: bold;'>Nombre de catégories: " . $categoryCount . "</p>";
     ?>
 </div>
-    <script src="script.js"></script>
+    <script src="test.js"></script>
 
 </body>
 </html>

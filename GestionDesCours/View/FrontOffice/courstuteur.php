@@ -18,6 +18,7 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduPath|Tuteur</title>
     <link rel="stylesheet" href="t.css">
+    <script src="coursform.js"></script>
 
 </head>
 <body>
@@ -55,32 +56,22 @@ if (isset($_GET['id'])) {
 
         <form class="form-container" id="courseForm" style="display: none;" action="ajoutercours.php" method="post">
     <h2 id="formTitle">Ajouter un Cours</h2>
-    <input type="text" id="courseTitle" name="courseTitle" placeholder="Titre du cours" required>
-    <textarea id="courseDescription" name="courseDescription" placeholder="Description du cours" required></textarea>
+    <input type="text" id="courseTitle" name="courseTitle" placeholder="Titre du cours" >
+    <textarea id="courseDescription" name="courseDescription" placeholder="Description du cours" ></textarea>
     <label for="courseLevel">Niveau :</label>
-    <select id="courseLevel" name="courseLevel" required>
+    <select id="courseLevel" name="courseLevel" >
         <option value="" disabled selected>-- Sélectionnez un niveau --</option>
         <option value="Débutant">Débutant</option>
         <option value="Intermédiaire">Intermédiaire</option>
         <option value="Avancé">Avancé</option>
     </select>
-    <input type="text" id="coursePrice" name="coursePrice" placeholder="Prix (ex: Gratuit, 50Dt)" required>
+    <input type="text" id="coursePrice" name="coursePrice" placeholder="Prix (ex: Gratuit, 50Dt)" >
     <input type="text" id="courseCategory" name="courseCategory" value="<?php echo $currentCategory['id']?>" readonly>
     <button type="submit">Enregistrer</button>
     <button type="button" onclick="cancelAdd()">Annuler</button>
 </form>
 
-        <form class="form-container" id="editCourseForm" style="display: none;" action="modifiercours.php" method="post">
-            <h2>Modifier un Cours</h2>
-            <input type="text" id="editCourseId" name="courseId" placeholder="ID du cours" required>
-            <input type="text" id="editCourseTitle" name="courseTitle" placeholder="Titre du cours" required>
-            <textarea id="editCourseDescription" name="courseDescription" placeholder="Description du cours" required></textarea>
-            <input type="text" id="editCourseLevel" name="courseLevel" placeholder="Niveau (Débutant, Intermédiaire, Avancé)" required>
-            <input type="text" id="editCoursePrice" name="coursePrice" placeholder="Prix (ex: Gratuit, 50Dt)" required>
-            <input type="text" id="editCourseCategory" name="courseCategory" placeholder="Catégorie du cours" required>
-            <button type="submit">Enregistrer</button>
-            <button type="button" onclick="cancelEdit()">Annuler</button>
-        </form>
+        
 
         <div style="text-align: center; margin-top: 20px;">
             <button class="blue-button" onclick="addNewCourse()">Ajouter un Nouveau Cours</button>

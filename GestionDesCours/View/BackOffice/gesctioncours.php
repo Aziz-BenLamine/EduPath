@@ -21,7 +21,7 @@
     </div>
     <button class="toggle-btn" onclick="toggleSidebar()">&#9664;</button>
     <main>
-        <h1>Gestion des Catégories</h1>
+        <h1>Gestion des Cours</h1>
         
     
 <div class="category-count-box">
@@ -29,7 +29,7 @@
     require_once '../../Controller/courscontroller.php';
     $CoursController = new CoursController();
     $courseCount = $CoursController->getCoursCount();
-    echo "<p style='color: blue; font-weight: bold;'>Nombre de catégories: " . $courseCount . "</p>";
+    echo "<p style='color: blue; font-weight: bold;'>Nombre de cours: " . $courseCount . "</p>";
     ?>
 </div>
     <script src="script.js"></script>

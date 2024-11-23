@@ -26,6 +26,7 @@ if (isset($_GET['id'])) {
         </div>
         <a href="#" >Gestion des utilisateurs</a>
         <a href="#" class="active">Gestion des categories
+        <a href="gesctioncours.php">Gestion des cours</a>
         <a href="#">Gestion des forums</a>
         <a href="#">Gestion des quizz</a>
         <a href="#">Gestion des reclamations</a>
@@ -45,14 +46,14 @@ if (isset($_GET['id'])) {
                 <div class="modal-content">
                     <button class="close" onclick="cancelEdit()" onKeyDown="if(event.key === 'Enter' || event.key === ' ') cancelEdit()">&times;</button>
                     
-                    <form class="form-container" id="editCategoryForm" method="post" action="modifiercategorie.php">
+                   <!-- <form class="form-container" id="editCategoryForm" method="post" action="modifiercategorie.php">
                         <h2 id="editFormTitle">Modifier une Catégorie</h2>
                         <input type="number" id="id" name="id" value="<?php echo $categorie['id'] ?>" readonly >
                         <input type="text" id="titre" name="titre" value="<?php echo $categorie['titre'] ?>" >
                         <input id="description" name="description" value="<?php echo $categorie['description'] ?>" >
                         <button type="submit" class="blue-button">Enregistrer</button>
                         <button type="button" class="blue-button" onclick="cancelEdit()">Annuler</button>
-                    </form>
+                    </form>-->
                 </div>
             </div>
         </div>

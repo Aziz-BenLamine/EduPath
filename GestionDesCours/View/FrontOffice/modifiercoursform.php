@@ -23,6 +23,7 @@ if (isset($_GET['idcours'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduPath|Tuteur</title>
     <link rel="stylesheet" href="t.css">
+    <script src="validcours.js"></script>
 
 </head>
 <body>
@@ -61,16 +62,16 @@ if (isset($_GET['idcours'])) {
         <form class="form-container" id="editCourseForm" style="display: block;" action="modifiercours.php" method="post">
             <h2>Modifier un Cours</h2>
     <input type="number" id="courseId" name="courseId" value="<?php echo $currentcourse['id']?>" readonly >
-            <input type="text" id="courseTitle" name="courseTitle" value="<?php echo $currentcourse['titre']?>" required>
-    <input id="courseDescription" name="courseDescription" value="<?php echo $currentcourse['description']?>" required>
+            <input type="text" id="courseTitle" name="courseTitle" value="<?php echo $currentcourse['titre']?>" >
+    <input id="courseDescription" name="courseDescription" value="<?php echo $currentcourse['description']?>" >
     <label for="courseLevel">Niveau :</label>
-    <select id="courseLevel" name="courseLevel" required>
-        <option value="<?php echo $currentcourse['niveau']?>" disabled selected><?php echo $currentcourse['niveau']?></option>
+    <select id="courseLevel" name="courseLevel" value="<?php echo $currentcourse['niveau']?>" >
+        <option value="<?php echo $currentcourse['niveau']?>"  disabled selected><?php echo $currentcourse['niveau']?></option>
         <option value="Débutant">Débutant</option>
         <option value="Intermédiaire">Intermédiaire</option>
         <option value="Avancé">Avancé</option>
     </select>
-    <input type="text" id="coursePrice" name="coursePrice" value="<?php echo $currentcourse['prix']?>" required>
+    <input type="text" id="coursePrice" name="coursePrice" value="<?php echo $currentcourse['prix']?>" >
     <input type="text" id="courseCategory" name="courseCategory" value="<?php echo $currentCategory['id']?>" readonly>
     
             <button type="submit">Enregistrer</button>
