@@ -11,11 +11,10 @@ if (isset($_GET['id'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (
-        isset($_POST["id"]) && isset($_POST["nom"]) && isset($_POST["date_c"]) && isset($_POST["email"]) && isset($_POST["sujet"]) && isset($_POST["descript"]) && isset($_POST["tel"])
+        isset($_POST["id"]) && isset($_POST["nom"]) && isset($_POST["date_c"]) && isset($_POST["email"]) && isset($_POST["sujet"]) && isset($_POST["descript"]) && isset($_POST["tel"]) && isset($_POST["statut"]) && isset($_POST["is_visble"])
     ) {
         if (
-            !empty($_POST["nom"]) && !empty($_POST["date_c"]) && !empty($_POST["email"]) && !empty($_POST["sujet"]) && !empty($_POST["descript"]) && !empty($_POST["tel"])
-        ) {
+            !empty($_POST["nom"]) && !empty($_POST["date_c"]) && !empty($_POST["email"]) && !empty($_POST["sujet"]) && !empty($_POST["descript"]) && !empty($_POST["tel"]) && !empty($_POST["statut"]) && !empty($_POST["is_visble"])){
             $reclamation = new Reclamation(
                 $_POST['id'],
                 $_POST['nom'],
@@ -23,7 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_POST['email'],
                 $_POST['sujet'],
                 $_POST['descript'],
-                $_POST['tel']
+                $_POST['tel'],
+                $_POST['statut'],
+                $_POST['is_visble']
             );
             $reclamationController->modifierReclamation($reclamation, $_POST['id']);
             header('Location:RecList.php');

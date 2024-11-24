@@ -1,13 +1,13 @@
 <?php
-include(__DIR__ .'../../config.php');
+include_once(__DIR__ .'../../config.php');
 include(__DIR__ . '/../models/réclamation.php');
 
 class ReclamationC
 {
     public function ajouterReclamation($reclamation)
     {
-        $sql = "INSERT INTO addreclamation (id, nom, date_c, email, sujet, descript, tel)
-        VALUES (:id, :nom, :date_c, :email, :sujet, :descript, :tel)";
+        $sql = "INSERT INTO addreclamation (id, nom, date_c, email, sujet, descript, tel, statut, is_visble)
+        VALUES (:id, :nom, :date_c, :email, :sujet, :descript, :tel, :statut,:is_visble)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -19,6 +19,8 @@ class ReclamationC
                 'sujet' => $reclamation->getSujet(),
                 'descript' => $reclamation->getDescript(),
                 'tel' => $reclamation->getTel(),
+                'statut' => $reclamation->getStatut(),
+                'is_visble' => $reclamation->getIs_visble()
             ]);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
