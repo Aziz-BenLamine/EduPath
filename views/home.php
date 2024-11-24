@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduPath</title>
-  <link rel="stylesheet" href="/Edupath/css/home.css">
+  <link rel="stylesheet" href=<?="/Edupath/css/home.css" ?>>
 </head>
 <body>
 
@@ -83,7 +83,7 @@
         <?php for ($i = 1; $i <= 3; $i++): ?>
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <div class="nameImageRole">
+            <div class="nameImageRole">            
               <img src="/Edupath/user.png" alt="Étudiant" class="avatar2">
               <div class="testimonial-name">
                 <h3>Sarah Johnson</h3>
