@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="form-container">
-        <h1>Ajouter une Reponse</h1>
+        <h1>Modifier  une Reponse</h1>
         <form  onsubmit="return validateQuiz();" action="conModifReponse.php" method="POST">
             
 
