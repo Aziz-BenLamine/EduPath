@@ -10,6 +10,7 @@
     $id_publication = $_GET['id'];
     $publicationC = new publicationC();
     $publication = $publicationC->getPublication($id_publication);
+
     //Reponses
    
     $reponseC = new reponseC();
@@ -57,6 +58,8 @@
                                     <div><?=$reponseC->timeAgo($reponse['date_creation'])?></div>
                                 </div>
                                 <p><?= $reponse['contenu']?></p>
+                                <a href="modifierReponse.php?id=<?= $reponse['id'] ?>" class="btn-modifier">Modifier</a>
+                                <a href="supprimerReponse.php?id=<?= $reponse['id'] ?>" class="btn-supprimer">Supprimer</a>
                             </li>
                         <?php endforeach ?>     
                     </ul>

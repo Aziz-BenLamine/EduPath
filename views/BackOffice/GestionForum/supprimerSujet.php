@@ -7,5 +7,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $sujetForumC = new SujetForumC();
     $sujetForumC->deleteSujet($id);
 
-    header("Location: /Edupath/views/BackOffice/GestionForum/forumAdmin.php?page=reponses");
+    header("Location: /Edupath/views/BackOffice/GestionForum/forumAdmin.php");
 }

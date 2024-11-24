@@ -20,6 +20,13 @@ class reponseC
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
+    public function getPublicationId($id) {
+        $stmt = $this->pdo->prepare("SELECT publication FROM reponse WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 
     public function listreponses($id_publication) {
         $stmt = $this->pdo->prepare("SELECT * FROM reponse WHERE publication = :id_publication");
@@ -53,6 +60,7 @@ class reponseC
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['count'];
     }
+    
 
     public function timeAgo($datetime)
     {

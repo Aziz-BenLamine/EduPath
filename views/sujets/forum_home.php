@@ -20,8 +20,11 @@ $sujets = $sujetsC->listSujets();
         <h1>Forum de discussion</h1>
         <p>Bienvenue dans le forum!</p>
         <section>
+            <div class="publication-add">
+                <h2>Sujets</h2>
+                <a href="/Edupath/views/sujets/addSujet.php" class="add-button">Ajouter un sujet</a>
+            </div>
 
-            <h2>Sujets</h2>
             <ul class="grid-list">
                 <?php foreach($sujets as $sujet): ?>
                     <li>
