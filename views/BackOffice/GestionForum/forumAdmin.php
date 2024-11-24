@@ -13,13 +13,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'publication';
   <body>
     <?php include 'C:\xampp\htdocs\EduPath\views/components/sidebar.php'; ?>
     <div class="content">
-      <h1>ADMIN - Forum Discussion</h1>
-      <p>GESTION</p>
-      <div>
-        <a href="?page=sujets">SUJETS</a>
-        <a href="?page=publication">PUBLICATIONS</a>
-        <a href="?page=reponses">REPONSES</a>
-      </div>
+      <h1>Admin - Forum Discussion</h1>
+      <p>Bienvenue dans le panneau d'administration du forum. Ici, vous pouvez gérer les sujets, les publications et les réponses du forum. Utilisez le menu ci-dessous pour accéder aux différentes sections.</p>
+      <nav>
+        <a href="?page=sujets">Sujets</a>
+        <a href="?page=publication">Publications</a>
+        <a href="?page=reponses">Reponses</a>
+      </nav>
       <div>
         <?php
         switch ($page) {
