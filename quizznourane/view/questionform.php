@@ -1,3 +1,15 @@
+<?php
+include __DIR__ . '/../model/quizModel.php';
+include __DIR__ . '/../controleur/quizControler.php';
+$quizController = new quizs();
+
+    
+$result = $quizController->afficheQuiz();
+
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -46,23 +58,66 @@
 <body>
     <div class="form-container">
         <h1>Ajouter une Question</h1>
-        <form action="addquestion.php" method="POST">
-            <label for="idq">ID de la Question :</label>
-            <input type="number" id="idq" name="idq" placeholder="Entrez l'ID" required>
+        <form onsubmit="return validateForm();" action="addquestion.php" method="POST">
+    <label for="idq">ID de la Question :</label>
+    <input type="number" id="idq" name="idq" placeholder="Entrez l'ID">
 
-            <label for="question">Énoncé :</label>
-            <input type="text" id="question" name="question" placeholder="Entrez la question" required>
+    <label for="question">Énoncé :</label>
+    <input type="text" id="question" name="question" placeholder="Entrez la question">
 
-            <label for="typeq">Type de la Question :</label>
-            <select id="typeq" name="typeq" required>
+
+    <label for="typeq">Type de la Question :</label>
+            <select id="typeq" name="typeq" >
                 <option value="">--Sélectionnez un type--</option>
                 <option value="choixMultiple">Choix Multiple</option>
                 <option value="vraiFaux">Vrai/Faux</option>
                 <option value="texte">Texte Libre</option>
             </select>
+    <label for="id_quiz">Quiz :</label>
 
-            <button type="submit" name="submit">Ajouter</button>
-        </form>
-    </div>
+
+    <select id="id_quiz" name="id_quiz">
+        <option value="">-- Sélectionnez un QUIZ --</option>
+        <?php
+        // Assurez-vous que $result contient les données des quizzes
+        foreach ($result as $row) {
+            echo '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row['id']) ."  " .  htmlspecialchars($row['titre']) .'</option>';
+        }
+        ?>
+    </select>
+
+    <button type="submit" name="submit">Ajouter</button>
+</form>
+
+<script>
+function validateForm() {
+    // Récupérer les champs du formulaire
+    const idq = document.getElementById('idq').value.trim();
+    const question = document.getElementById('question').value.trim();
+    const id_quiz = document.getElementById('id_quiz').value.trim();
+
+    // Validation de l'ID de la question
+    if (!idq || isNaN(idq) || parseInt(idq) <= 0) {
+        alert("L'ID de la question doit être un nombre positif.");
+        return false;
+    }
+
+    // Validation de l'énoncé
+    if (!question || question.length < 5) {
+        alert("L'énoncé doit contenir au moins 5 caractères.");
+        return false;
+    }
+
+    // Validation du Quiz
+    if (!id_quiz) {
+        alert("Veuillez sélectionner un quiz.");
+        return false;
+    }
+
+    // Si toutes les validations passent
+    return true;
+}
+</script>
+
 </body>
 </html>

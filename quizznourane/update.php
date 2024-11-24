@@ -1,6 +1,6 @@
 <?php
-include('../model/quizModel.php'); // Adjust path based on the folder structure
-include('../controleur/quizControler.php');
+include('..\quizznourane\model\quizModel.php'); // Adjust path based on the folder structure
+include('..\quizznourane\controleur\quizControler.php');
 
 
 

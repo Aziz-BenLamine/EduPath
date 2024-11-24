@@ -1,3 +1,4 @@
+
 <?php
 include __DIR__ . '/../model/quizModel.php';
 include __DIR__ . '/../controleur/quizControler.php';
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $quizController = new quizs();
 
     
-    $result = $quizController->addquestion($question);
+    $result = $quizController->updatequestion($question , $idq);
     header('Location: index.php');
 
 

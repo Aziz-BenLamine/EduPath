@@ -1,84 +1,120 @@
 <?php
 
-/*class Quiz {
+class Quiz {
     private $id;
     private $titre;
-    private $descrpt;
-    private $creationDate;
-    private $difficulte;
+    private $description;
     private $categorie;
-
-
-    public function getIdqz()
+    private string $image;
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
     {
-        return $this->idqz;
+        return $this->id;
     }
-    public function setIdqz($idqz)
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
     {
-        $this->idqz = $idqz;
+        $this->id = $id;
 
         return $this;
     }
+
+    /**
+     * Get the value of titre
+     */ 
     public function getTitre()
     {
         return $this->titre;
     }
+
+    /**
+     * Set the value of titre
+     *
+     * @return  self
+     */ 
     public function setTitre($titre)
     {
-        $this->titre= $titre;
+        $this->titre = $titre;
 
         return $this;
     }
-    public function getDescrpt()
+
+    /**
+     * Get the value of description
+     */ 
+    public function getDescription()
     {
-        return $this->descrpt;
+        return $this->description;
     }
-    public function setDescrpt($descrpt)
+
+    /**
+     * Set the value of description
+     *
+     * @return  self
+     */ 
+    public function setDescription($description)
     {
-        $this->descrpt = $descrpt;
+        $this->description = $description;
 
         return $this;
     }
-    
-    public function getCreationdate()
-    {
-        return $this->creationdate;
-    }
-    public function setCreationdate($creationdate)
-    {
-        $this->creationdate = $creationdate;
 
-        return $this;
-    }public function getDifficulte()
-    {
-        return $this->difficulte;
-    }
-    public function setDifficulte($difficulte)
-    {
-        $this->difficulte = $difficulte;
-
-        return $this;
-  
-    }
+    /**
+     * Get the value of categorie
+     */ 
     public function getCategorie()
     {
         return $this->categorie;
     }
+
+    /**
+     * Set the value of categorie
+     *
+     * @return  self
+     */ 
     public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
 
         return $this;
     }
+
+    /**
+     * Get the value of image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @return  self
+     */ 
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function ajouterQuestion(Question $question) {
+        $this->questions[] = $question;
+    }
 }
-
-}*/
-
 class Question {
     private $idq;
     private $question;
     private $typeq;
-    
+    private $id_quiz;
     public function getIdq()
     {
         return $this->idq;
@@ -109,56 +145,68 @@ class Question {
 
         return $this;
     }
+    public function setId_quiz($id_quiz)
+    {
+        $this->id_quiz = $id_quiz;
 
-
-
-
+        return $this;
+    }
+    public function getId_quiz()
+    {
+        return $this->id_quiz;
+    }
 }
-/*class Reponse {
-    private $idr;
-    private $reponse;
+class Reponse {
+    private $id;
+    private $reponseText;
     private $score;
     private $correction;
+    private $id_question;
 
-    public function getIdr()
-    {
-        return $this->idr;
+    // Getter et Setter pour $id
+    public function getId() {
+        return $this->id;
     }
-    public function setIdq($idr)
-    {
-        $this->idr = $idr;
 
-        return $this;
+    public function setId($id) {
+        $this->id = $id;
     }
-    public function getReponse()
-    {
-        return $this->reponse;
-    }
-    public function setReponse($reponse)
-    {
-        $this->reponse= $reponse;
 
-        return $this;
+    // Getter et Setter pour $reponseText
+    public function getReponseText() {
+        return $this->reponseText;
     }
-    public function getScore()
-    {
+
+    public function setReponseText($reponseText) {
+        $this->reponseText = $reponseText;
+    }
+
+    // Getter et Setter pour $score
+    public function getScore() {
         return $this->score;
     }
-    public function setScore($score)
-    {
-        $this->score = $score;
 
-        return $this;
+    public function setScore($score) {
+        $this->score = $score;
     }
-    public function getCorrection()
-    {
+
+    // Getter et Setter pour $correction
+    public function getCorrection() {
         return $this->correction;
     }
-    public function setCorrection($correction)
-    {
-        $this->correction = $correction;
 
-        return $this;
+    public function setCorrection($correction) {
+        $this->correction = $correction;
     }
-}*/
+
+    // Getter et Setter pour $question
+    public function getId_question() {
+        return $this->id_question;
+    }
+
+    public function setId_question($id_question) {
+        $this->id_question = $id_question;
+    }
+}
+
  ?>

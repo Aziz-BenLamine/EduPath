@@ -1,6 +1,6 @@
 <?php
-include('../model/quizModel.php'); // Adjust path based on the folder structure
-include('../controleur/quizControler.php');
+include('..\quizznourane\model\quizModel.php'); 
+include('..\quizznourane\controleur\quizControler.php');
 $quizController = new quizs();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
     $quizController->updatequestion($questionObj, $idq);
 
     
-    header("Location: list_questions.php");
+    header("Location: back.php");
     exit;
 } else {
     echo "Invalid request.";
