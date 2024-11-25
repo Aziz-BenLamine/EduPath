@@ -14,7 +14,7 @@
       <a href="#home" class="active"><i class="fas fa-users"></i> Gestion des utilisateurs</a>
       <a href="#services"><i class="fas fa-book"></i> Gestion des categories et des cours</a>
       <a href="#clients"><i class="fas fa-comments"></i> Gestion du forum</a>
-      <a href="..\EduPath\quizznourane\back.php"><i class="fas fa-question-circle"></i> Gestion des quizs</a>
+      <a href="../../quizznourane/back.php"><i class="fas fa-question-circle"></i> Gestion des quizs</a>
       <a href="#contact"><i class="fas fa-exclamation-triangle"></i> Gestion des reclamations</a>
     </div>
     <button class="toggle-btn">&#9664;</button>
