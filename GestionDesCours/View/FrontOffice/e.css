@@ -3,7 +3,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('background.jpg') no-repeat center center fixed;
+    background-color: #e0f7fa;
+    /*: url('background.jpg') no-repeat center center fixed;*/
     background-size: cover;
     color: #333;
 }

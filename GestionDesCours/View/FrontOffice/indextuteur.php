@@ -2,6 +2,12 @@
 require_once '../../Controller/categoriescontroller.php';
 $CategoriesController = new CategoriesController();
 $categories = $CategoriesController->affichercategories();
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    $categories = $CategoriesController->searchCategories($search);
+} else {
+    $categories = $CategoriesController->affichercategories();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,6 +34,10 @@ $categories = $CategoriesController->affichercategories();
   </header>
     <main>
         <h1>Gestion de Mes Cours</h1>
+        <form method="GET" action="">
+    <input type="text" name="search" placeholder="Rechercher une catégorie">
+    <button type="submit">Rechercher</button>
+</form>
         
         <div id="courses" class="courses-container">
         <?php foreach ($categories as $categorie) : ?>
@@ -82,3 +92,5 @@ $categories = $CategoriesController->affichercategories();
   </footer>
 </body>
 </html>
+
+

@@ -74,8 +74,8 @@ if (isset($_GET['idcours'])) {
     <input type="text" id="coursePrice" name="coursePrice" value="<?php echo $currentcourse['prix']?>" >
     <input type="text" id="courseCategory" name="courseCategory" value="<?php echo $currentCategory['id']?>" readonly>
     
-            <button type="submit">Enregistrer</button>
-            <button type="button" onclick="cancelEdit()">Annuler</button>
+            <button type="submit" class="blue-button">Enregistrer</button>
+            <button class="blue-button" type="button" onclick="cancelEdit()">Annuler</button>
         </form>
 
         <div style="text-align: center; margin-top: 20px;">
