@@ -71,5 +71,22 @@ class CoursController
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
-    
+    public function getAllCours()
+    {
+        $db = config::getConnexion();
+        $query = $db->prepare('SELECT * FROM cours');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function searchCours($search){
+        try {
+            $db = config::getConnexion();
+            $query = $db->prepare('SELECT * FROM cours WHERE titre LIKE :search OR description LIKE :search');
+            $query->bindValue(':search', '%' . $search . '%');
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }

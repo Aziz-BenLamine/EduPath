@@ -74,6 +74,16 @@ class CategoriesController
         echo "Error: " . $e->getMessage();
     }
 }
+public function getAllCategories()
+{
+    try {
+        $db = config::getConnexion();
+        $query = $db->prepare('SELECT * FROM categories');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 }
-
+}
 ?>
