@@ -10,6 +10,18 @@ if (isset($_GET['id'])) {
  require_once '../../Controller/courscontroller.php';
     $coursController = new CoursController();
     $cours = $coursController->affichercours($cat_id);
+    if (isset($_GET['sort'])) {
+        $sort = $_GET['sort'];
+        if ($sort == 'asc') {
+            usort($cours, function ($a, $b) {
+                return $a['prix'] - $b['prix'];
+            });
+        } elseif ($sort == 'desc') {
+            usort($cours, function ($a, $b) {
+                return $b['prix'] - $a['prix'];
+            });
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,6 +50,15 @@ if (isset($_GET['id'])) {
     <main>
         <h1>Gestion de Mes Cours</h1>
         <h2>Categorie: <?php echo $currentCategory['titre']?></h2>
+        <form method="get" action="" style="margin-bottom: 20px; text-align: center; color: #000;">
+            <label for="sort">Trier par prix :</label>
+            <select name="sort" id="sort" onchange="this.form.submit()" style="margin-left: 10px; padding: 5px; background-color: #007BFF; color: #fff; border: none; border-radius: 4px;">
+                <option value="">-- Sélectionnez --</option>
+                <option value="asc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'asc') echo 'selected'; ?>>Ascendant</option>
+                <option value="desc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'desc') echo 'selected'; ?>>Descendant</option>
+            </select>
+            <input type="hidden" name="id" value="<?php echo $cat_id; ?>">
+        </form>
         
         <div id="courses" class="courses-container">
         <?php foreach ($cours as $course) : ?>
@@ -118,4 +139,3 @@ if (isset($_GET['id'])) {
   </footer>
 </body>
 </html>
-

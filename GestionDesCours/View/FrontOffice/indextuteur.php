@@ -34,10 +34,13 @@ if (isset($_GET['search'])) {
   </header>
     <main>
         <h1>Gestion de Mes Cours</h1>
-        <form method="GET" action="">
+        <div style="margin-bottom: 20px; text-align: center; color: #000;">
+        <form method="GET" >
     <input type="text" name="search" placeholder="Rechercher une catégorie">
     <button type="submit">Rechercher</button>
+    
 </form>
+</div>
         
         <div id="courses" class="courses-container">
         <?php foreach ($categories as $categorie) : ?>
