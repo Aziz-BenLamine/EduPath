@@ -12,8 +12,24 @@ $listeReclamations = $reclamationController->listeReclamations();
     <title>Liste des Réclamations</title>
     <link rel="stylesheet" href="styleM.css">
     <script src="addRec.js" defer></script>
+    <style>
+        .header {
+            width: 100%;
+            position: fixed;
+            top: -50px;
+            left: 0;
+            background-color: #f8f9fa;
+            transition: top 0.3s;
+        }
+        .header:hover {
+            top: 0;
+        }
+    </style>
 </head>
 <body>
+<div class="header">
+        <?php include '../components/header.php'; ?>
+    </div>
     <div class="container">
         <h2>Liste des Réclamations</h2>
         <table>
@@ -43,6 +59,7 @@ $listeReclamations = $reclamationController->listeReclamations();
                     echo '<td class="actions">';
                     echo '<a href="modRec.php?id=' . $reclamation['id'] . '" class="btn-action">Modifier</a>';
                     echo '<a href="SuppRec.php?id=' . $reclamation['id'] . '" class="btn-action btn-danger">Supprimer</a>';
+                    echo '<a href="downloadRec.php?id=' . htmlspecialchars($reclamation['id']) . '" class="btn-download"><img src="../Frontoffice/assets/download.png" alt="Télécharger" style="width:16px;height:16px;"></a>';
                     echo '</td>';
                     echo '</tr>';
                 }

@@ -9,9 +9,9 @@ class reclamation {
     private $descript;
     private $tel;
     private $statut;
-    private $is_visble;
+    private $is_visible;
 
-    public function __construct($id, $nom, $date_c, $email, $sujet, $descript, $tel,$statut,$is_visble) {
+    public function __construct($id, $nom, $date_c, $email, $sujet, $descript, $tel,$statut,$is_visible) {
         $this->id = $id;
         $this->nom = $nom;
         $this->date_c = $date_c;
@@ -20,7 +20,7 @@ class reclamation {
         $this->descript = $descript;
         $this->tel = $tel;
         $this->statut = $statut;
-        $this->is_visble = $is_visble;
+        $this->is_visible = $is_visible;
     }
 
     // Getters
@@ -54,8 +54,8 @@ class reclamation {
     public function getStatut() {
         return $this->statut;
     }
-    public function getIs_visble() {
-        return $this->is_visble;
+    public function getIs_visible() {
+        return $this->is_visible;
     }
     // Setters
     public function setId($id) {
@@ -87,8 +87,8 @@ class reclamation {
     public function setStatut($statut) {
         $this->statut = $statut;
     }
-    public function setIs_visble($is_visble) {
-        $this->is_visble = $is_visble;
+    public function setIs_visible($is_visible) {
+        $this->is_visible = $is_visible;
     }
 }
 ?>

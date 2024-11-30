@@ -153,8 +153,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php } ?>
             <?php if (isset($reclamation)) { ?>
             <form id="reponseForm" action="repondre.php?id=<?php echo htmlspecialchars($reclamation['id']); ?>" method="post">
-                <input type="hidden" id="id_reclamation" name="id_reclamation" value="<?php echo htmlspecialchars($reclamation['id']); ?>">
                 <div class="form-group">
+                    <input type="hidden" id="idr" name="idr">
                     <label for="name_a">Nom de l'Administrateur</label>
                     <input type="text" id="name_a" name="name_a" onkeyup="validateName()">
                     <div class="error-message" id="name-error"></div>

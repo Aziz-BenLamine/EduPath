@@ -51,6 +51,13 @@ class ReponseC{
         $query = $db->prepare($sql);
         $query->execute(['id' => $id]);
     }
+    public function unhide($id)
+    {
+        $sql = "UPDATE addreclamation SET is_visible = 1 WHERE id = :id";
+        $db = config::getConnexion();
+        $query = $db->prepare($sql);
+        $query->execute(['id' => $id]);
+    }
 
 }
 ?>
