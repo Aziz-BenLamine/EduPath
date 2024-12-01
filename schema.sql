@@ -23,7 +23,7 @@ CREATE TABLE Publication (
     cree_par INT NOT NULL,
     sujet INT NOT NULL,
     FOREIGN KEY (cree_par) REFERENCES Utilisateur(id),
-    FOREIGN KEY (sujet) REFERENCES SujetForum(id)
+    FOREIGN KEY (sujet) REFERENCES SujetForum(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Reponse (
@@ -35,3 +35,4 @@ CREATE TABLE Reponse (
     FOREIGN KEY (cree_par) REFERENCES Utilisateur(id),
     FOREIGN KEY (publication) REFERENCES Publication(id) ON DELETE CASCADE;
 );
+
