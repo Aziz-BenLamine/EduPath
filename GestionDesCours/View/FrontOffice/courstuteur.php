@@ -68,6 +68,7 @@ if (isset($_GET['id'])) {
             <p><?php echo $course['niveau']; ?></p>
             <p><?php echo $course['prix']; ?> Dt</p>
             <p><?php echo $currentCategory['titre']; ?></p>
+            <a class="blue-button" href="ajouterpdf.php?id=<?php echo $course['id']?>&idcat=<?php echo $course['categorie'] ?>">Ajouter PDF</a>
             <a class="blue-button" href="modifiercoursform.php?id=<?php echo $course['categorie'] ?>&idcours=<?php echo $course['id']?>">Modifier</a>
             <a class="blue-button" href="supprimercours.php?id=<?php echo $course['id']?>">Supprimer</a>
         </div>
@@ -91,6 +92,12 @@ if (isset($_GET['id'])) {
     <button type="submit">Enregistrer</button>
     <button type="button" onclick="cancelAdd()">Annuler</button>
 </form>
+<form  class="form-container" action="ajouterpdf.php" method="post" enctype="multipart/form-data" style="display: none;">
+        <label for="pdfFile">Select PDF file to upload:</label>
+        <input type="file" name="pdfFile" id="pdfFile" accept="application/pdf">
+        <button type="submit">Upload PDF</button>
+    </form>
+
 
         
 

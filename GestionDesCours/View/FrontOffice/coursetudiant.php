@@ -69,7 +69,7 @@ if (isset($_GET['id'])) {
             <p><?php echo $course['niveau']; ?></p>
             <p><?php echo $course['prix']; ?> Dt</p>
             <p><?php echo $currentCategory['titre']; ?></p>
-            <a class="blue-button">Consulter</a>
+            <a class="blue-button" href="consulter.php?id=<?php echo $course['id'];?>">Consulter</a>
             <a class="blue-button">Acheter</a>
             
         </div>
