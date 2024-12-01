@@ -169,6 +169,21 @@ class quizs
         }
         return $list;
     }
+    public function searchQuestions($query) { 
+        $sql = "SELECT * FROM question WHERE question LIKE :query OR typeq LIKE :query";
+        $conn = Config::getConnexion(); // Use existing database connection from Config
+    
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(['query' => '%' . $query . '%']);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); // Return results as an associative array
+        } catch (Exception $e) {
+            // Log the error and rethrow it
+            error_log("Error searching questions: " . $e->getMessage());
+            throw new Exception("Error searching questions.");
+        }
+    }
+    
 
 }
 ?>
