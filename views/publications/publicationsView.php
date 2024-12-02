@@ -37,6 +37,14 @@ if ($sort) {
         }
     });
 }
+
+// Pagination
+$items_per_page = 3;
+$current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$total_items = count($publications);
+$total_pages = ceil($total_items / $items_per_page);
+$offset = ($current_page - 1) * $items_per_page;
+$publications = array_slice($publications, $offset, $items_per_page);
 ?>
 
 <!DOCTYPE html>
@@ -73,15 +81,15 @@ if ($sort) {
                 <form id="searchForm" method="GET" action="/Edupath/views/publications/publicationsView.php" class="search-form">
                     <input type="hidden" name="id" value="<?= $id_sujet ?>">
                     <div class="search-container">
-                        <input type="text" name="search" placeholder="Search by title" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>" class="search-input">
+                        <input type="text" name="search" placeholder="Recherche par titre" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>" class="search-input">
                         <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
                     </div>
                     <select name="sort" onchange="document.getElementById('searchForm').submit()" class="search-select">
-                        <option value="">Sort by</option>
-                        <option value="title_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'title_asc' ? 'selected' : '' ?>>Title (A-Z)</option>
-                        <option value="title_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'title_desc' ? 'selected' : '' ?>>Title (Z-A)</option>
-                        <option value="date_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'date_asc' ? 'selected' : '' ?>>Date (Oldest)</option>
-                        <option value="date_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'date_desc' ? 'selected' : '' ?>>Date (Newest)</option>
+                        <option value="">Trier par</option>
+                        <option value="title_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'title_asc' ? 'selected' : '' ?>>Titre (A-Z)</option>
+                        <option value="title_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'title_desc' ? 'selected' : '' ?>>Titre (Z-A)</option>
+                        <option value="date_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'date_asc' ? 'selected' : '' ?>>Date (Anciens)</option>
+                        <option value="date_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'date_desc' ? 'selected' : '' ?>>Date (Nouveaux)</option>
                     </select>
                 </form>
             </div>
@@ -110,7 +118,21 @@ if ($sort) {
                     <?php endforeach; ?>
                 </ul>
             </section>
+            <div class="pagination">
+                <?php if ($current_page > 1): ?>
+                    <a href="?id=<?= $id_sujet ?>&search=<?= $search ?>&sort=<?= $sort ?>&page=<?= $current_page - 1 ?>">&laquo; Precedent</a>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                    <a href="?id=<?= $id_sujet ?>&search=<?= $search ?>&sort=<?= $sort ?>&page=<?= $i ?>" class="<?= $i == $current_page ? 'active' : '' ?>"><?= $i ?></a>
+                <?php endfor; ?>
+
+                <?php if ($current_page < $total_pages): ?>
+                    <a href="?id=<?= $id_sujet ?>&search=<?= $search ?>&sort=<?= $sort ?>&page=<?= $current_page + 1 ?>">Suivant &raquo;</a>
+                <?php endif; ?>
+            </div>
         </div>
+
     </div>
 </body>
 
