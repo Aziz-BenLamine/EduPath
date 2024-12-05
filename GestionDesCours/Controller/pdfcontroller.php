@@ -42,4 +42,12 @@ class PdfController{
         $query->bindValue(':id', $id);
         $query->execute();
     }
+    public function getpdfbycours($id_cours){
+        $db = config::getConnexion();
+        $query = $db->prepare('SELECT * FROM pdf WHERE id_cours=:id_cours');
+        $query->bindValue(':id_cours', $id_cours);
+        $query->execute();
+        $pdfs = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $pdfs;
+    }
 }

@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduPath|Tuteur</title>
+    <title>EduPath|Etudiant</title>
     <link rel="stylesheet" href="t.css">
 
 </head>
@@ -70,8 +70,7 @@ if (isset($_GET['id'])) {
             <p><?php echo $course['prix']; ?> Dt</p>
             <p><?php echo $currentCategory['titre']; ?></p>
             <a class="blue-button" href="consulter.php?id=<?php echo $course['id'];?>">Consulter</a>
-            <a class="blue-button">Acheter</a>
-            
+            <a class="blue-button" href="payement.php?id=<?php echo $course['id']; ?>">Acheter</a>
         </div>
         
     <?php endforeach; ?>
