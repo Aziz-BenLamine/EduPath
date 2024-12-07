@@ -1,6 +1,6 @@
 <?php
 
-require '../quizznourane/dompdf/vendor/autoload.php';
+require 'C:/xampp/htdocs/dashboard/quizznourane/dompdf/vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 

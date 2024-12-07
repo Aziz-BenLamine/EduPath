@@ -3,9 +3,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Include PHPMailer library files
-require '../quizznourane/PHPMailer.php';
-require '../quizznourane/SMTP.php';
-require '../quizznourane/Exception.php';
+require 'C:/xampp/htdocs/dashboard//quizznourane/PHPMailer.php';
+require 'C:/xampp/htdocs/dashboard/quizznourane/SMTP.php';
+require 'C:/xampp/htdocs/dashboard/quizznourane/Exception.php';
 
 // Check if the form is submitted
 if (isset($_POST['send'])) {
@@ -22,13 +22,13 @@ if (isset($_POST['send'])) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'landoulsinourane@gmail.com'; // Replace with your Gmail email
+        $mail->Username = 'Landoulsinourane@gmail.com'; // Replace with your Gmail email
         $mail->Password = 'wiam zzjp sbyy kwdf';   // Replace with your Gmail app password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Set sender and recipient
-        $mail->setFrom('aicha.fersi03@gmail.com', 'Aicha Fersi ');
+        $mail->setFrom('Landoulsinourane@gmail.com', 'Nourane');
         $mail->addAddress($email); // Add recipient from form input
 
         // Email content
@@ -42,7 +42,7 @@ if (isset($_POST['send'])) {
         // Success message
         echo '<div style="background-color: #4CAF50; color: #fff; padding: 15px; text-align: center;">';
         echo '<h2>Mail sent successfully 🚀</h2>';
-        echo '<a href="/dashboard/recettenadine/view/Back/pages/tables.php"><button style="background-color: #008CBA; color: #fff; padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px;">Get Back</button></a>';
+        echo '<a href="sidebar.php"><button style="background-color: #008CBA; color: #fff; padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px;">Get Back</button></a>';
         echo '</div>';
     } catch (Exception $e) {
         echo '<div style="background-color: #f44336; color: #fff; padding: 15px; text-align: center;">';

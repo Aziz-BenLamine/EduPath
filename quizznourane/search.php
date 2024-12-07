@@ -1,5 +1,5 @@
 <?php
-require '../quizznourane/config.php';
+require 'C:/xampp/htdocs/dashboard/quizznourane/config.php';
 
 $question = null; // Initialize variable to store the result
 

@@ -106,38 +106,48 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
 </div>
         <!-- Questions Table -->
         <div class="table-wrapper">
-            <table class="table table-bordered table-striped" id="questionsTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Question</th>
-                        <th>Type</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($questions as $question): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($question['idq']); ?></td>
-                            <td><?= htmlspecialchars($question['question']); ?></td>
-                            <td><?= htmlspecialchars($question['typeq']); ?></td>
-                            <td>
-                                <!-- Update Button -->
-                                <form action="update_question.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="idq" value="<?= htmlspecialchars($question['idq']); ?>">
-                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
-                                </form>
-    </form>
-                                <!-- Delete Button -->
-                                <form action="delete_question.php" method="POST" style="display:inline;">
-                                    <input type="hidden" name="idq" value="<?= htmlspecialchars($question['idq']); ?>">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?');">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+        <table class="table table-bordered table-striped" id="questionsTable">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Question</th>
+            <th>Type</th>
+            <th>ID QUIZ</th>
+            <th>Nombre de réponses possibles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($questions as $question): ?>
+            <tr>
+                <td><?= htmlspecialchars($question['idq']); ?></td>
+                <td><?= htmlspecialchars($question['question']); ?></td>
+                <td><?= htmlspecialchars($question['typeq']); ?></td>
+                <td><?= htmlspecialchars($question['id_quiz']); ?></td>
+                <td><?= htmlspecialchars($question['numR']); ?></td>
+                <td>
+                    <!-- Update Button -->
+                    <form action="update_question.php" method="GET" style="display:inline;">
+                    <input type="hidden" name="idq" value="<?= htmlspecialchars($question['idq']); ?>">
+                       
+                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                    </form>
+                    
+                    <!-- Delete Button -->
+                    <form action="delete_question.php" method="POST" style="display:inline;">
+                        <input type="hidden" name="idq" value="<?= htmlspecialchars($question['idq']); ?>">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?');">Delete</button>
+                    </form>
+                    <form action="view\ajoutreponse.php" method="GET" style="display:inline;">
+                        <input type="hidden" name="idq" value="<?= htmlspecialchars($question['idq']); ?>">
+                        <button type="submit" class="btn btn-danger btn-sm" >Add response </button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
         </div>
         <div class="row">
     <div class="col-12">
@@ -183,6 +193,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                     <th>ID</th>
                     <th>Question</th>
                     <th>Type</th>
+                    <th>ID QUIZZ</th>
+                    <th>Nombre de reponse possible</th>
                 </tr>
             </thead>
             <tbody>
@@ -191,6 +203,9 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <td><?= htmlspecialchars($result['idq']) ?></td>
                         <td><?= htmlspecialchars($result['question']) ?></td>
                         <td><?= htmlspecialchars($result['typeq']) ?></td>
+                        <td><?= htmlspecialchars($result['id_quiz']) ?></td>
+                        <td><?= htmlspecialchars($result['numR']) ?></td>
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -215,7 +230,61 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
   <button type="submit" class="btn btn-danger btn-sm" >Imprimer</button>
  </form>
     </div>
+    <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Envoi d'email</h6>
+                </div>
+            </div>
+            <div class="card-body">
+            <form method="POST" action="test.php">
+    <div class="form-group mb-3">
+        <label for="adresse" class="form-label">Email Address</label>
+        <input 
+            type="email" 
+            id="adresse" 
+            name="adresse" 
+            class="form-control form-control-lg" 
+            placeholder="Entrez l'email" 
+            required
+        >
+        <div class="error-message" id="emailError"></div>
 
+    </div>
+
+    <!-- Subject -->
+    <div class="form-group mb-3">
+        <label for="objet" class="form-label">Subject</label>
+        <input 
+            type="text" 
+            id="objet" 
+            name="subject" 
+            class="form-control form-control-lg" 
+            placeholder="Entrez l'objet" 
+            required
+        >
+        <div class="error-message" id="subjectError"></div>
+
+    </div>
+
+    <!-- Message -->
+    <div class="form-group mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea 
+            id="message" 
+            name="message" 
+            class="form-control form-control-lg" 
+            rows="4" 
+            placeholder="Entrez le message" 
+            required
+        ></textarea>
+        <div class="error-message" id="messageError"></div>
+
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+        <button type="submit" name="send" value="submit" class="btn btn-success btn-lg w-100">Envoyer un email</button>
+    </div>
+</form>
     
 </body>
 </html>

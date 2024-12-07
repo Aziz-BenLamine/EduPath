@@ -115,47 +115,71 @@ class Question {
     private $question;
     private $typeq;
     private $id_quiz;
+    private $numR; // New attribute
+
     public function getIdq()
     {
         return $this->idq;
     }
+
     public function setIdq($idq)
     {
         $this->idq = $idq;
 
         return $this;
     }
+
     public function getQuestion()
     {
         return $this->question;
     }
+
     public function setQuestion($question)
     {
         $this->question = $question;
 
         return $this;
     }
+
     public function getTypeq()
     {
         return $this->typeq;
     }
+
     public function setTypeq($typeq)
     {
         $this->typeq = $typeq;
 
         return $this;
     }
+
     public function setId_quiz($id_quiz)
     {
         $this->id_quiz = $id_quiz;
 
         return $this;
     }
+
     public function getId_quiz()
     {
         return $this->id_quiz;
     }
+
+    // Getter for numR
+    public function getNumR()
+    {
+        return $this->numR;
+    }
+
+    // Setter for numR
+    public function setNumR($numR)
+    {
+        $this->numR = $numR;
+
+        return $this;
+    }
 }
+
 class Reponse {
     private $id;
     private $reponseText;

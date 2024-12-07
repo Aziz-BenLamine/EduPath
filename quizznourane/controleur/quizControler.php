@@ -2,75 +2,78 @@
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../model/quizModel.php';
 
-
 class quizs 
-{
-    public function affichequestion() {
-        $conn = config :: getConnexion();
-        $requette = $conn->prepare("select * from question");
-        $requette->execute();
-        $resultats = $requette->fetchAll(PDO::FETCH_ASSOC);
-        return $resultats ;
-    }
-
-    public function affichequestionQuiz($id) {
-        $conn = config :: getConnexion();
-        $requette = $conn->prepare("select * from question where id_quiz = $id");
-        $requette->execute();
-        $resultats = $requette->fetchAll(PDO::FETCH_ASSOC);
-        return $resultats ;
-    }
-    
-
-    public function addquestion($question) {
-        $sql = "INSERT INTO question (idq, question, typeq , id_quiz) VALUES (:idq, :question, :typeq , :id_quiz)";
-        $conn = config::getConnexion();
-        try {
-            $query = $conn->prepare($sql);
-            $query->execute([
-                ':idq' => $question->getIdq(), 
-                ':question' => $question->getQuestion(),
-                ':typeq' => $question->getTypeq(),
-                ':id_quiz' => $question->getId_quiz()
-            ]);
-            return true; // Indicate success
-        } catch (Exception $e) {
-            echo 'Error: ' . $e->getMessage();
-            return false; // Indicate failure
+    {
+        public function affichequestion() {
+            $conn = config::getConnexion();
+            $requette = $conn->prepare("SELECT * FROM question");
+            $requette->execute();
+            $resultats = $requette->fetchAll(PDO::FETCH_ASSOC);
+            return $resultats;
         }
-    }
     
-
-    public function deletequestion($idq) {
-        $sql = "DELETE FROM question WHERE idq = :idq";
-        $conn = config::getConnexion();
-        $req = $conn->prepare($sql);
-        $req->bindValue(':idq', $idq);
-        try {
-            $req->execute();
-        } catch (Exception $e) {
-            die('Error: ' . $e->getMessage());
+        public function affichequestionQuiz($id) {
+            $conn = config::getConnexion();
+            $requette = $conn->prepare("SELECT * FROM question WHERE id_quiz = :id");
+            $requette->execute(['id' => $id]);
+            $resultats = $requette->fetchAll(PDO::FETCH_ASSOC);
+            return $resultats;
         }
-    }
-
-    public function updatequestion($question, $idq) {
-        $sql = "UPDATE question SET 
-                question = :question, 
-                typeq = :typeq 
-                WHERE idq = :idq";
     
-        $conn = config::getConnexion();
-        try {
-            $list = $conn->prepare($sql);
-            $list->bindValue(':idq', $idq);
-            $list->bindValue(':question', $question->getQuestion());
-            $list->bindValue(':typeq', $question->getTypeq());
-            $list->execute();
-        } catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
+        public function addquestion($question) {
+            $sql = "INSERT INTO question (idq, question, typeq, id_quiz, numR) 
+                    VALUES (:idq, :question, :typeq, :id_quiz, :numR)";
+            $conn = config::getConnexion();
+            try {
+                $query = $conn->prepare($sql);
+                $query->execute([
+                    ':idq' => $question->getIdq(), 
+                    ':question' => $question->getQuestion(),
+                    ':typeq' => $question->getTypeq(),
+                    ':id_quiz' => $question->getId_quiz(),
+                    ':numR' => $question->getNumR()
+                ]);
+                return true; // Indicate success
+            } catch (Exception $e) {
+                echo 'Error: ' . $e->getMessage();
+                return false; // Indicate failure
+            }
         }
-        return $list;
-    }
+    
+        public function deletequestion($idq) {
+            $sql = "DELETE FROM question WHERE idq = :idq";
+            $conn = config::getConnexion();
+            try {
+                $req = $conn->prepare($sql);
+                $req->bindValue(':idq', $idq);
+                $req->execute();
+            } catch (Exception $e) {
+                die('Error: ' . $e->getMessage());
+            }
+        }
+    
+        public function updatequestion($question, $idq) {
+            $sql = "UPDATE question SET 
+                    question = :question, 
+                    typeq = :typeq,
+                    id_quiz = :id_quiz,
+                    numR = :numR 
+                    WHERE idq = :idq";
+    
+            $conn = config::getConnexion();
+            try {
+                $list = $conn->prepare($sql);
+                $list->bindValue(':idq', $idq);
+                $list->bindValue(':question', $question->getQuestion());
+                $list->bindValue(':typeq', $question->getTypeq());
+                $list->bindValue(':id_quiz', $question->getId_quiz());
+                $list->bindValue(':numR', $question->getNumR());
+                $list->execute();
+            } catch (PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+            return $list;
+        }
     //QUIZ  
     public function afficheQuiz() {
         $conn = config :: getConnexion();
@@ -138,6 +141,37 @@ class quizs
             return false; // Indicate failure
         }
     }
+    public function getNumRForQuestion($id_question) {
+        $sql = "SELECT numR FROM question WHERE idq = :id_question";
+        $conn = config::getConnexion();  // Get the database connection
+        
+        try {
+            $stmt = $conn->prepare($sql);  // Prepare the query
+            $stmt->bindParam(':id_question', $id_question);  // Bind the parameter
+            $stmt->execute();  // Execute the query
+            
+            return $stmt->fetchColumn();  // Return the 'numR' value (maximum responses allowed)
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+            return false;  // Return false if there’s an error
+        }
+    }
+    public function getResponseCountForQuestion($id_question) {
+        $sql = "SELECT COUNT(*) FROM reponse WHERE id_question = :id_question";
+        $conn = config::getConnexion();  // Get the database connection
+        
+        try {
+            $stmt = $conn->prepare($sql);  // Prepare the query
+            $stmt->bindParam(':id_question', $id_question);  // Bind the parameter
+            $stmt->execute();  // Execute the query
+            
+            return $stmt->fetchColumn();  // Return the count of responses
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+            return false;  // Return false if there’s an error
+        }
+    }
+        
     public function afficherReponse() {
 
         

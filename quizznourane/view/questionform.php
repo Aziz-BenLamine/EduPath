@@ -85,6 +85,8 @@ $result = $quizController->afficheQuiz();
         }
         ?>
     </select>
+    <label for="numR">Énoncé :</label>
+    <input type="number" id="numR" name="numR" placeholder="Entrez combien de reponse possible">
 
     <button type="submit" name="submit">Ajouter</button>
 </form>

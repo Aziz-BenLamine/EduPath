@@ -2,10 +2,61 @@
 <?php
   include __DIR__ . '/../model/quizModel.php';
   include __DIR__ . '/../controleur/quizControler.php';
+  include_once 'C:\xampp\htdocs\dashboard\quizznourane\config.php';
 
-  $question = new quizs();
+  
+$question = new quizs();
+$result = $question->affichequestion(); // Get the list of questions
 
-  $result = $question ->affichequestion()
+// Get the id_question from GET or POST request
+$id_question = isset($_GET['idq']) ? $_GET['idq'] : (isset($_POST['id_question']) ? $_POST['id_question'] : null);
+
+// Check if id_question is valid
+if ($id_question) {
+    // Get the max allowed responses and the current response count
+    $numR = $question->getNumRForQuestion($id_question);
+    $responseCount = $question->getResponseCountForQuestion($id_question);
+echo "Maximum Responses Allowed: " . htmlspecialchars($numR) . "<br>";
+echo "Current Response Count: " . htmlspecialchars($responseCount) . "<br>";
+
+    // Check if the number of responses is less than the allowed max
+    if ($responseCount < $numR) {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            // Retrieve and validate the form data
+            $reponseText = trim($_POST['reponse'] ?? '');
+            $score = trim($_POST['score'] ?? '');
+            $correction = trim($_POST['correction'] ?? '');
+
+            // Check if all fields are filled
+            if (!empty($reponseText) && !empty($score) && !empty($correction)) {
+                // Create a new response object
+                $reponse = new Reponse();
+                $reponse->setReponseText($reponseText);
+                $reponse->setScore($score);
+                $reponse->setCorrection($correction);
+                $reponse->setId_question($id_question);
+
+                // Add the response to the database
+                $quizController = new quizs();
+                if ($quizController->addReponse($reponse)) {
+                    // Redirect to success message or list page
+                    header('Location: index.php?success=1');
+                    exit;
+                } else {
+                    echo "<p style='color: red;'>Failed to add the response. Please try again.</p>";
+                }
+            } else {
+                echo "<p style='color: red;'>All fields are required!</p>";
+            }
+        }
+    } else {
+        echo "<p style='color: red;'>You have reached the maximum number of responses for this question.</p>";
+        header('Location: \dashboard\quizznourane\sidebar.php');
+        
+    }
+} else {
+    echo "<p style='color: red;'>Invalid or missing question ID.</p>";
+}
 ?>
 
 
@@ -57,7 +108,7 @@
 <body>
     <div class="form-container">
         <h1>Ajouter une Reponse</h1>
-        <form  onsubmit="return validateQuiz();" action="addReponse.php" method="POST">
+        <form  onsubmit="return validateQuiz();" action="" method="POST">
             
 
             <label for="reponse">reponse: </label>

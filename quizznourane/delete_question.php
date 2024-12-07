@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $quizController = new quizs();
     $quizController->deletequestion($idq);
 
-    header("Location: back.php");
+    header("Location: sidebar.php");
     exit;
 }
 ?>
