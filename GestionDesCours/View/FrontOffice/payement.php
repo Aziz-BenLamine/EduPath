@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
 <h1>Payment Details</h1>
 <h2>Course: <?php echo htmlspecialchars($course['titre']); ?></h2>
 <h2>Price: <?php echo htmlspecialchars($course['prix']); ?> TND</h2>
-<form id="paymentForm" action="process_payment.php" method="POST">
+<form id="paymentForm" action="process_payment.php?id=<?php echo $course["categorie"]?>" method="POST">
     <input type="hidden" name="course_id" value="<?php echo htmlspecialchars($course['id']); ?>">
     <div>
         <label for="cardNumber">Card Number:</label>
