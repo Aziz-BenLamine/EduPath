@@ -29,7 +29,7 @@ class SujetForum
     {
         echo "Le sujet a été supprimer";
     }*/
-    
+
 
     //Getters
     public function getId()
@@ -82,5 +82,4 @@ class SujetForum
     {
         $this->cree_par = $cree_par;
     }
-
 }

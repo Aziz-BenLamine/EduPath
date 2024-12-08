@@ -3,6 +3,10 @@
 include_once '/xampp/htdocs/EduPath/controllers/sujetForumC.php';
 $sujetsC = new sujetForumC();
 $sujets = $sujetsC->listSujets();
+//QUOTE
+$quoteData = $sujetsC->getLearningQuote();
+$quote = $quoteData['quote'];
+$author = $quoteData['author'];
 
 ?>
 
@@ -38,6 +42,13 @@ $sujets = $sujetsC->listSujets();
             </ul>
 
         </section>
+        <section class="inspirational-quote">
+            <blockquote>
+                <p>"<?= $quote ?>"</p>
+                <footer>- <?= $author ?></footer>
+            </blockquote>
+        </section>
+    </main>
 </body>
 
 </html>

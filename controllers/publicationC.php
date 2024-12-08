@@ -59,6 +59,8 @@ class publicationC
     }
 
     //API
+    //GOOGLE SEARCH API
+    /*
     function getEducationalArticles($query)
     {
         $apiKey = getenv('GEMINI_API_KEY');
@@ -72,12 +74,12 @@ class publicationC
         curl_close($ch);
 
         return json_decode($response, true);
-    }
+    }*/
 
     //REPONSE MODEL FLAN-T5-LARGE
-    public function getAIResponse($taskDescription, $inputText)
+    /*public function getAIResponse($taskDescription, $inputText)
     {
-        $apiKey = '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';
+        $apiKey = getenv('HUGGINGFACE_API_KEY');
         $apiUrl = 'https://api-inference.huggingface.co/models/google/flan-t5-large';
 
         // Combine task description with input text
@@ -118,12 +120,12 @@ class publicationC
         } else {
             return "No response generated or unexpected format.";
         }
-    }
+    }*/
 
     //REPONSE MODEL GEMINI
     public function getGeminiResponse($inputText)
     {
-        $apiKey = 'AIzaSyAMeXID9ChaQKb-TsAyDPOcVD7CyuByZ_c';
+        $apiKey = getenv('GEMINI_API_KEY');
         $apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' . $apiKey;
 
         $data = [
