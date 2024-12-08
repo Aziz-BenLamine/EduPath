@@ -77,13 +77,27 @@ $reponses = $reponseC->listreponses($id_publication);
 
             <div class="add-response">
                 <h2>Rependre</h2>
-                <form action="submitReponse.php?id_publication=<?php echo $id_publication ?>" method="post">
-                    <textarea name="response" placeholder="Ecrire votre response ici..."></textarea><br>
+                <form id="responseForm" action="submitReponse.php?id_publication=<?php echo $id_publication ?>" method="post">
+                    <textarea id="responseContent" name="response" placeholder="Ecrire votre response ici..."></textarea><br>
+                    <div id="error-message" style="color: red; display: none;">Une reponse doit contenir au moins 4 caractères.</div>
+
                     <button type="submit" class="response-btn">Rependre</button>
                 </form>
             </div>
         </main>
     </div>
 </body>
+<script>
+    document.getElementById('responseForm').addEventListener('submit', function(event) {
+        var responseContent = document.getElementById('responseContent').value.trim();
+        var errorMessage = document.getElementById('error-message');
+        if (responseContent.length < 4) {
+            errorMessage.style.display = 'block';
+            event.preventDefault();
+        } else {
+            errorMessage.style.display = 'none';
+        }
+    });
+</script>
 
 </html>
