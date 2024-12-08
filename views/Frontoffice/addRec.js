@@ -24,20 +24,26 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById('reclamationForm').addEventListener('submit', function(event) {
-        const nom = document.getElementById('nom').value;
-        const email = document.getElementById('email').value;
-        const date = document.getElementById('date_c').value;
-        const sujet = document.getElementById('sujet').value;
-        const descript = document.getElementById('descript').value;
-        const tel = document.getElementById('tel').value;
-
-        if (!nom && !email && !date && !sujet && !descript && !tel) {
-            alert('Tous les champs sont vides.');
-            event.preventDefault();
-            return;
-        }
-
+        validateNom();
+        validateEmail();
         validateDate();
+        validateSujet();
+        validateDescript();
+        validateTel();
+
+        const errors = document.querySelectorAll('.error-message');
+        let formIsValid = true;
+
+        errors.forEach(function(error) {
+            if (error.innerText !== 'Correct') {
+                formIsValid = false;
+            }
+        });
+
+        if (!formIsValid) {
+            alert('La formulaire est vide ou Veuillez corriger les erreurs dans le formulaire.');
+            event.preventDefault();
+        }
     });
 
     function validateNom() {
@@ -54,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function validateEmail() {
         const email = document.getElementById('email').value;
         const message = document.getElementById('email-error');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!emailRegex.test(email)) {
+        if (!emailPattern.test(email)) {
             showError(message, 'Veuillez entrer une adresse email valide.');
         } else {
             showSuccess(message, 'Correct');
@@ -65,16 +71,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function validateDate() {
         const date = document.getElementById('date_c').value;
+        const message = document.getElementById('date-error');
         const today = new Date().toISOString().split('T')[0];
-        let valid = true;
 
         if (date !== today) {
-            alert('La date doit être la date courante.');
-            valid = false;
-        }
-
-        if (!valid) {
-            event.preventDefault();
+            showError(message, 'La date doit être la date courante.');
+        } else {
+            showSuccess(message, 'Correct');
         }
     }
 
@@ -82,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const sujet = document.getElementById('sujet').value;
         const message = document.getElementById('sujet-error');
 
-        if (sujet.length < 3 || !/^[a-zA-Z\s]+$/.test(sujet)) {
-            showError(message, 'Le sujet doit contenir au moins 3 caractères et uniquement des lettres et des espaces.');
+        if (sujet.length < 3) {
+            showError(message, 'Le sujet doit contenir au moins 3 caractères.');
         } else {
             showSuccess(message, 'Correct');
         }
@@ -93,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const descript = document.getElementById('descript').value;
         const message = document.getElementById('descript-error');
 
-        if (descript.trim() === '') {
-            showError(message, 'Le message ne doit pas être vide.');
+        if (descript.length < 10) {
+            showError(message, 'La description doit contenir au moins 10 caractères.');
         } else {
             showSuccess(message, 'Correct');
         }
@@ -103,10 +106,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function validateTel() {
         const tel = document.getElementById('tel').value;
         const message = document.getElementById('tel-error');
-        const telRegex = /^\d{8}$/;
+        const telPattern = /^[0-9]{8}$/;
 
-        if (!telRegex.test(tel)) {
-            showError(message, 'Le numéro de téléphone doit contenir exactement 8 chiffres.');
+        if (!telPattern.test(tel)) {
+            showError(message, 'Le numéro de téléphone doit contenir 8 chiffres.');
         } else {
             showSuccess(message, 'Correct');
         }

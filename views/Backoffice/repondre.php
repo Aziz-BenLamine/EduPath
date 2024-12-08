@@ -1,7 +1,7 @@
 <?php
 include '../../controllers/réponseC.php';
 include '../../controllers/réclamationC.php';
-
+include 'mail.php';
 $reponseController = new ReponseC();
 $reclamationController = new ReclamationC();
 $error = "";
@@ -23,6 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             var_dump($reponse);
             $reponseController->ajouterReponse($reponse);
+            $resultatEmail = envoyerEmail(
+                $reclamation['email'],
+                $reclamation['nom'],
+                $reclamation['sujet'],
+                $_POST['contenu']
+            );
+            if ($resultatEmail !== true) {
+                // Gérer l'erreur d'envoi d'email
+                echo $resultatEmail;
+            }
             header('Location:listeRec.php'); // Rediriger vers la liste des réclamations après ajout de la réponse
             exit();
         } else {
