@@ -1,26 +1,33 @@
 <?php
-    include_once '/xampp/htdocs/EduPath/controllers/publicationC.php';
-    include_once '/xampp/htdocs/EduPath/controllers/reponseC.php';
+include_once '/xampp/htdocs/EduPath/controllers/publicationC.php';
+include_once '/xampp/htdocs/EduPath/controllers/reponseC.php';
 
-    include_once '/xampp/htdocs/EduPath/controllers/sujetForumC.php';
-    $sujetsC = new sujetForumC();
-    $sujets = $sujetsC->listSujets();
+include_once '/xampp/htdocs/EduPath/controllers/sujetForumC.php';
+$sujetsC = new sujetForumC();
+$sujets = $sujetsC->listSujets();
 
-    //Publications
-    $id_publication = $_GET['id'];
-    $publicationC = new publicationC();
-    $publication = $publicationC->getPublication($id_publication);
+//Publications
+$id_publication = $_GET['id'];
+$publicationC = new publicationC();
+$publication = $publicationC->getPublication($id_publication);
 
-    //Reponses
-   
-    $reponseC = new reponseC();
-    $reponses = $reponseC->listreponses($id_publication);
-    
+
+// Get AI response
+//$aiResponse = $publicationC->getAIResponse("Explain in simple terms", $publication['contenu']);
+$aiResponse = $publicationC->getGeminiResponse($publication['contenu']);
+
+
+//Reponses
+
+$reponseC = new reponseC();
+$reponses = $reponseC->listreponses($id_publication);
+
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,41 +37,44 @@
 
     </style>
 </head>
+
 <body>
     <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
     <div class="container">
         <div class="sidebar">
             <h2>Sujets</h2>
             <ul>
-                <?php foreach($sujets as $sujet): ?>
+                <?php foreach ($sujets as $sujet): ?>
                     <li><a href="/Edupath/views/publications/publicationsView.php?id=<?= $sujet['id'] ?>"><?= $sujet['title'] ?></a></li>
                 <?php endforeach ?>
             </ul>
         </div>
-        
+
         <main>
             <div class="publication">
                 <h1><?= $publication['titre'] ?> </h1>
                 <p><?= $publication['contenu'] ?> </p>
+                <h2>AI Response</h2>
+                <p><?= $aiResponse ?></p>
             </div>
 
             <section>
-                    <h2>Responses</h2>
-                    <ul>
-                        <?php foreach($reponses as $reponse): ?>
-                            <li>    
-                                <div class="name-date">
-                                    <h4><?= $reponseC->creePar($reponse['cree_par'])['nom'] . ' ' . $reponseC->creePar($reponse['cree_par'])['prenom']?></h4>
-                                    <div><?=$reponseC->timeAgo($reponse['date_creation'])?></div>
-                                </div>
-                                <p><?= $reponse['contenu']?></p>
-                                <a href="modifierReponse.php?id=<?= $reponse['id'] ?>" class="btn-modifier">Modifier</a>
-                                <a href="supprimerReponse.php?id=<?= $reponse['id'] ?>" class="btn-supprimer">Supprimer</a>
-                            </li>
-                        <?php endforeach ?>     
-                    </ul>
+                <h2>Responses</h2>
+                <ul>
+                    <?php foreach ($reponses as $reponse): ?>
+                        <li>
+                            <div class="name-date">
+                                <h4><?= $reponseC->creePar($reponse['cree_par'])['nom'] . ' ' . $reponseC->creePar($reponse['cree_par'])['prenom'] ?></h4>
+                                <div><?= $reponseC->timeAgo($reponse['date_creation']) ?></div>
+                            </div>
+                            <p><?= $reponse['contenu'] ?></p>
+                            <a href="modifierReponse.php?id=<?= $reponse['id'] ?>" class="btn-modifier">Modifier</a>
+                            <a href="supprimerReponse.php?id=<?= $reponse['id'] ?>" class="btn-supprimer">Supprimer</a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
             </section>
-            
+
             <div class="add-response">
                 <h2>Rependre</h2>
                 <form action="submitReponse.php?id_publication=<?php echo $id_publication ?>" method="post">
@@ -75,4 +85,5 @@
         </main>
     </div>
 </body>
+
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 // Sujets
 require_once "/xampp/htdocs/EduPath/controllers/sujetForumC.php";
 $sujetsC = new sujetForumC();
@@ -10,6 +11,7 @@ $sujet_actuel = $sujetsC->getSujet($id_sujet);
 require_once "/xampp/htdocs/EduPath/controllers/publicationC.php";
 $publicationC = new publicationC();
 $publications = $publicationC->listPublications($id_sujet);
+$reponse = $publicationC->getEducationalArticles('Quel est le meilleur algorithme de tri selon vous cote complexité et temps?');
 
 // Search && sort
 $search = isset($_GET['search']) ? $_GET['search'] : '';
