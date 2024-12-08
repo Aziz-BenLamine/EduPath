@@ -59,68 +59,7 @@ class publicationC
     }
 
     //API
-    //GOOGLE SEARCH API
-    /*
-    function getEducationalArticles($query)
-    {
-        $apiKey = getenv('GEMINI_API_KEY');
-        $cx = '952da862c54e94b95';
-        $apiUrl = "https://www.googleapis.com/customsearch/v1?q=" . urlencode($query) . "&cx={$cx}&key={$apiKey}&hl=fr";
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, $apiUrl);
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        return json_decode($response, true);
-    }*/
-
-    //REPONSE MODEL FLAN-T5-LARGE
-    /*public function getAIResponse($taskDescription, $inputText)
-    {
-        $apiKey = getenv('HUGGINGFACE_API_KEY');
-        $apiUrl = 'https://api-inference.huggingface.co/models/google/flan-t5-large';
-
-        // Combine task description with input text
-        $data = [
-            'inputs' => $taskDescription . ': ' . $inputText,
-        ];
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $apiUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
-            'Authorization: ' . 'Bearer ' . $apiKey,
-        ]);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-
-        $response = curl_exec($ch);
-
-        if (curl_errno($ch)) {
-            error_log('CURL Error: ' . curl_error($ch));
-            return "Error: Unable to process request.";
-        }
-
-        curl_close($ch);
-
-        $responseData = json_decode($response, true);
-
-        // Debugging
-        error_log(print_r($responseData, true));
-
-        // Adapt response handling
-        if (isset($responseData[0]['generated_text'])) {
-            return $responseData[0]['generated_text'];
-        } else if (isset($responseData['error'])) {
-            return "Error from API: " . $responseData['error'];
-        } else {
-            return "No response generated or unexpected format.";
-        }
-    }*/
 
     //REPONSE MODEL GEMINI
     public function getGeminiResponse($inputText)
