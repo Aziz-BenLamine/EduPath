@@ -24,4 +24,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: /EduPath/views/publications/publicationsView.php?id=$id_sujet");
     exit();
 }
-?>

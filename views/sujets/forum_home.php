@@ -22,33 +22,43 @@ $author = $quoteData['author'];
 
 <body>
     <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
-    <main>
-        <h1>Forum de discussion</h1>
-        <p>Bienvenue dans le forum!</p>
-        <section>
-            <div class="publication-add">
-                <h2>Sujets</h2>
-                <a href="/Edupath/views/sujets/addSujet.php" class="add-button">Ajouter un sujet</a>
-            </div>
-
-            <ul class="grid-list">
+    <div class="container">
+        <div class="sidebar">
+            <h2>Sujets</h2>
+            <ul>
                 <?php foreach ($sujets as $sujet): ?>
-                    <li>
-                        <a href="/Edupath/views/publications/publicationsView.php?id=<?= $sujet['id'] ?>">
-                            <?= $sujet['title'] ?>
-                        </a>
-                    </li>
+                    <li><a href="/Edupath/views/publications/publicationsView.php?id=<?= $sujet['id'] ?>"><?= $sujet['title'] ?></a></li>
                 <?php endforeach; ?>
             </ul>
+        </div>
+        <main>
+            <h1>Forum de discussion</h1>
+            <p>Bienvenue dans le forum!</p>
+            <section>
+                <div class="publication-add">
+                    <h2>Sujets</h2>
+                    <a href="/Edupath/views/sujets/addSujet.php" class="add-button">Ajouter un sujet</a>
+                </div>
 
-        </section>
-        <section class="inspirational-quote">
-            <blockquote>
-                <p>"<?= $quote ?>"</p>
-                <footer>- <?= $author ?></footer>
-            </blockquote>
-        </section>
-    </main>
+                <ul class="grid-list">
+                    <?php foreach ($sujets as $sujet): ?>
+                        <li>
+                            <a href="/Edupath/views/publications/publicationsView.php?id=<?= $sujet['id'] ?>">
+                                <?= $sujet['title'] ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+
+            </section>
+            <section class="inspirational-quote">
+                <blockquote>
+                    <p>"<?= $quote ?>"</p>
+                    <footer>- <?= $author ?></footer>
+                </blockquote>
+            </section>
+        </main>
+    </div>
 </body>
 
 </html>
