@@ -43,6 +43,16 @@ $questions = $quizController->affichequestion();
     </style>
 </head>
 <body>
+<?php if (isset($_GET['status'])): ?>
+    <div id="notification" class="notification <?= $_GET['status'] === 'success' ? 'success' : 'error'; ?>">
+        <span id="notification-text">
+            <?= $_GET['status'] === 'success' 
+                ? "🎉 Recette ajoutée avec succès !" 
+                : "⚠️ Erreur: " . htmlspecialchars($_GET['message'] ?? "Une erreur est survenue."); ?>
+        </span>
+        <button id="close-notification" onclick="closeNotification()">×</button>
+    </div>
+    <?php endif; ?>
     <div class="container">
         <h2>Questions List</h2>
         <div class="table-wrapper">
@@ -83,6 +93,22 @@ $questions = $quizController->affichequestion();
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script>
+    // Close notification function
+    function closeNotification() {
+        const notification = document.getElementById("notification");
+        notification.style.animation = "fade-out 0.5s ease-out";
+        setTimeout(() => notification.remove(), 500); // Remove after fade-out
+    }
+
+    // Auto-close notification after 5 seconds
+    setTimeout(() => {
+        const notification = document.getElementById("notification");
+        if (notification) {
+            closeNotification();
+        }
+    }, 30000);
+</script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

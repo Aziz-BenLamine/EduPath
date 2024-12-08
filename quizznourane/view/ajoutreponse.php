@@ -2,7 +2,7 @@
 <?php
   include __DIR__ . '/../model/quizModel.php';
   include __DIR__ . '/../controleur/quizControler.php';
-  include_once 'C:\xampp\htdocs\dashboard\quizznourane\config.php';
+  include_once '../quizznourane/config.php';
 
   
 $question = new quizs();
@@ -16,8 +16,7 @@ if ($id_question) {
     // Get the max allowed responses and the current response count
     $numR = $question->getNumRForQuestion($id_question);
     $responseCount = $question->getResponseCountForQuestion($id_question);
-echo "Maximum Responses Allowed: " . htmlspecialchars($numR) . "<br>";
-echo "Current Response Count: " . htmlspecialchars($responseCount) . "<br>";
+
 
     // Check if the number of responses is less than the allowed max
     if ($responseCount < $numR) {
@@ -50,7 +49,7 @@ echo "Current Response Count: " . htmlspecialchars($responseCount) . "<br>";
             }
         }
     } else {
-        echo "<p style='color: red;'>You have reached the maximum number of responses for this question.</p>";
+        //echo "<p style='color: red;'>You have reached the maximum number of responses for this question.</p>";
         header('Location: \dashboard\quizznourane\sidebar.php');
         
     }

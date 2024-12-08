@@ -44,6 +44,7 @@
     </style>
 </head>
 <body>
+
     <div class="form-container">
         <h1>Ajouter une Quiz</h1>
         <form  onsubmit="return validateQuiz();" action="addQuiz.php" method="POST">
@@ -111,6 +112,22 @@
         }
         
         
+</script>
+<script>
+    // Close notification function
+    function closeNotification() {
+        const notification = document.getElementById("notification");
+        notification.style.animation = "fade-out 0.5s ease-out";
+        setTimeout(() => notification.remove(), 500); // Remove after fade-out
+    }
+
+    // Auto-close notification after 5 seconds
+    setTimeout(() => {
+        const notification = document.getElementById("notification");
+        if (notification) {
+            closeNotification();
+        }
+    }, 5000);
 </script>
 
 </body>

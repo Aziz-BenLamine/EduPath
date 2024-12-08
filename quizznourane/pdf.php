@@ -1,12 +1,12 @@
 <?php
 
-require 'C:/xampp/htdocs/dashboard/quizznourane/dompdf/vendor/autoload.php';
+require '../quizznourane/dompdf/vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
 try {
     // Database connection
-    require 'C:\xampp\htdocs\dashboard\quizznourane\config.php';
+    require '..\quizznourane\config.php';
     $pdo = Config::getConnexion();
 
     // Fetch quiz data
