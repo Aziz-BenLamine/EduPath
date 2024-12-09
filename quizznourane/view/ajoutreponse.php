@@ -2,7 +2,7 @@
 <?php
   include __DIR__ . '/../model/quizModel.php';
   include __DIR__ . '/../controleur/quizControler.php';
-  include_once '../quizznourane/config.php';
+  include_once '../config.php';
 
   
 $question = new quizs();

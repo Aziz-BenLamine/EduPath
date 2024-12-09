@@ -47,7 +47,7 @@ $questions = $quizController->affichequestion();
     <div id="notification" class="notification <?= $_GET['status'] === 'success' ? 'success' : 'error'; ?>">
         <span id="notification-text">
             <?= $_GET['status'] === 'success' 
-                ? "🎉 Recette ajoutée avec succès !" 
+                ? "🎉 quiz ajoutée avec succès !" 
                 : "⚠️ Erreur: " . htmlspecialchars($_GET['message'] ?? "Une erreur est survenue."); ?>
         </span>
         <button id="close-notification" onclick="closeNotification()">×</button>

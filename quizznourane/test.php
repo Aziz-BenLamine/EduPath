@@ -3,9 +3,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Include PHPMailer library files
-require 'C:/xampp/htdocs/dashboard//quizznourane/PHPMailer.php';
-require 'C:/xampp/htdocs/dashboard/quizznourane/SMTP.php';
-require 'C:/xampp/htdocs/dashboard/quizznourane/Exception.php';
+require '../quizznourane/PHPMailer.php';
+require '../quizznourane/SMTP.php';
+require '../quizznourane/Exception.php';
 
 // Check if the form is submitted
 if (isset($_POST['send'])) {

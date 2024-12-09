@@ -97,8 +97,12 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
     <button class="toggle-btn">&#9664;</button>
 
     <div class="content">
+        
         <h2>Questions List</h2>
-
+        <form action="view\questionform.php" method="GET" style="display:inline;">
+            <input type="hidden" name="idq" value="<?= htmlspecialchars($question['idq']); ?>">
+            <button type="submit" class="btn btn-danger btn-sm" >Ajout question </button>
+        </form>
                 <!-- Search Bar and Print Button -->
                 <div class="search-bar">
                 
@@ -329,18 +333,94 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
         button:hover {
             background-color: #0056b3;
         }
+        .toggle-btn {
+  /*position: fixed;*/
+  width:150px;
+  top: 20px;
+  left: 250px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: left 0.3s ease;
+  font-size: 18px;
+  border-radius: 5px;
+}
     </style>
 </head>
 <body>
 <?php if (isset($_GET['status'])): ?>
     <div id="notification" class="notification <?= $_GET['status'] === 'success' ? 'success' : 'error'; ?>">
+        <span id="notification-icon" class="icon">
+            <?= $_GET['status'] === 'success' 
+                ? "🎉" 
+                : "⚠️"; ?>
+        </span>
         <span id="notification-text">
             <?= $_GET['status'] === 'success' 
-                ? "🎉 quiz ajoutée avec succès !" 
-                : "⚠️ Erreur: " . htmlspecialchars($_GET['message'] ?? "Une erreur est survenue."); ?>
+                ? "Quiz ajouté avec succès !" 
+                : htmlspecialchars($_GET['message'] ?? "Une erreur est survenue. Veuillez réessayer."); ?>
         </span>
+        <button id="close-notification" class="close-btn" onclick="closeNotification()">×</button>
     </div>
 <?php endif; ?>
+
+<script>
+    // Fonction pour fermer la notification
+    function closeNotification() {
+        const notification = document.getElementById('notification');
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 300); // Durée de l'animation de disparition
+    }
+</script>
+
+<style>
+    /* Styles pour la notification */
+    #notification {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        transition: opacity 0.3s ease;
+    }
+
+    .notification.success {
+        background-color: #e0ffe0;
+        border-left: 5px solid #4caf50;
+    }
+
+    .notification.error {
+        background-color: #ffe0e0;
+        border-left: 5px solid #f44336;
+    }
+
+    #notification-icon {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    #close-notification {
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #555;
+        cursor: pointer;
+    }
+
+    #close-notification:hover {
+        color: #000;
+    }
+</style>
+
     <div class="form-container">
         <h1>Ajouter un Quiz</h1>
         <form  onsubmit="return validateQuiz();" action="view\addQuiz.php" method="POST">

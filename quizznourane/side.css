@@ -53,8 +53,9 @@
 .sidebar a:hover i {
   color: #007bff;
 }
-.toggle-btn {
-  position: fixed;
+/*.toggle-btn {
+  /*position: fixed;
+  
   top: 20px;
   left: 250px;
   background-color: #007bff;
@@ -66,7 +67,7 @@
   transition: left 0.3s ease;
   font-size: 18px;
   border-radius: 5px;
-}
+}*/
 .sidebar.hidden + .toggle-btn {
   left: 20px;
 }

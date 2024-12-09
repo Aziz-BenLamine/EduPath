@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     
     $result = $quizController->addQuiz($Quiz);
-    header('Location:\dashboard\quizznourane\sidebar.php?status=success');
+    header('Location:\EduPath\quizznourane\sidebar.php?status=success');
 
 
 if (!empty($error)) {

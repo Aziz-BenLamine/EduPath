@@ -176,7 +176,7 @@ class quizs
 
         
         $conn = config :: getConnexion();
-        $requette = $conn->prepare("select * from reponse");
+        $requette = $conn->prepare("select * from reponse ");
         $requette->execute();
         $resultats = $requette->fetchAll(PDO::FETCH_ASSOC);
         return $resultats ;
