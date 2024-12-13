@@ -9,7 +9,8 @@ if (isset($_GET['id'])) {
 }
  require_once '../../Controller/courscontroller.php';
     $coursController = new CoursController();
-    $cours = $coursController->affichercours($cat_id);
+    $userid = $_GET['user'];
+    $cours = $coursController->affichercourst($cat_id, $userid);
     if (isset($_GET['sort'])) {
         $sort = $_GET['sort'];
         if ($sort == 'asc') {
@@ -58,6 +59,7 @@ if (isset($_GET['id'])) {
                 <option value="desc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'desc') echo 'selected'; ?>>Descendant</option>
             </select>
             <input type="hidden" name="id" value="<?php echo $cat_id; ?>">
+            <input type="hidden" name="user" value="<?php echo $userid; ?>">
         </form>
         
         <div id="courses" class="courses-container">
@@ -68,15 +70,15 @@ if (isset($_GET['id'])) {
             <p><?php echo $course['niveau']; ?></p>
             <p><?php echo $course['prix']; ?> Dt</p>
             <p><?php echo $currentCategory['titre']; ?></p>
-            <a class="blue-button" href="ajouterpdf.php?id=<?php echo $course['id']?>&idcat=<?php echo $course['categorie'] ?>">Ajouter PDF</a>
-            <a class="blue-button" href="modifiercoursform.php?id=<?php echo $course['categorie'] ?>&idcours=<?php echo $course['id']?>">Modifier</a>
-            <a class="blue-button" href="supprimercours.php?id=<?php echo $course['id']?>">Supprimer</a>
+            <a class="blue-button" href="ajouterpdf.php?id=<?php echo $course['id']?>&idcat=<?php echo $course['categorie'] ?>&user=<?php echo $userid?>">Ajouter PDF</a>
+            <a class="blue-button" href="modifiercoursform.php?id=<?php echo $course['categorie'] ?>&idcours=<?php echo $course['id']?>&user=<?php echo $userid?>">Modifier</a>
+            <a class="blue-button" href="supprimercours.php?id=<?php echo $course['id']?>&user=<?php echo $course['userid']?>">Supprimer</a>
         </div>
         
     <?php endforeach; ?>
         </div>
 
-        <form class="form-container" id="courseForm" style="display: none;" action="ajoutercours.php" method="post">
+        <form class="form-container" id="courseForm" style="display: none;" action="ajoutercours.php?user=<?php echo $userid?>" method="post">
     <h2 id="formTitle">Ajouter un Cours</h2>
     <input type="text" id="courseTitle" name="courseTitle" placeholder="Titre du cours" >
     <textarea id="courseDescription" name="courseDescription" placeholder="Description du cours" ></textarea>
@@ -99,7 +101,7 @@ if (isset($_GET['id'])) {
 
         <div style="text-align: center; margin-top: 20px;">
             <button class="blue-button" onclick="addNewCourse()">Ajouter un Nouveau Cours</button>
-            <a class="blue-button" href="indextuteur.php">retour</a>
+            <a class="blue-button" href="indextuteur.php?user=<?php echo $userid?>">retour</a>
         </div>
     </main>
 

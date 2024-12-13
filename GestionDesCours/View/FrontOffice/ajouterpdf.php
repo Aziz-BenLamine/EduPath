@@ -11,7 +11,7 @@ if (isset($_GET['idcat'])) {
     $CategoriesController = new CategoriesController();
     $currentCategory = $CategoriesController->getCategoriesById($idcat);
 }
-
+$user=$_GET['user'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,7 @@ if (isset($_GET['idcat'])) {
 </head>
 <body>
     <h2>Upload PDF File</h2>
-    <form  class="form-container" action="upload.php?id=<?php echo $currentcours['id']?>&idcat=<?php echo $currentcours['categorie'] ?>" method="post" enctype="multipart/form-data" style="display: block;">
+    <form  class="form-container" action="upload.php?id=<?php echo $currentcours['id']?>&idcat=<?php echo $currentcours['categorie'] ?>&user=<?php echo $user?>" method="post" enctype="multipart/form-data" style="display: block;">
         <label for="pdfFile">Select PDF file to upload:</label>
         <p>Description du cours</p>
         <input type="file" name="desc" id="desc" accept="application/pdf">

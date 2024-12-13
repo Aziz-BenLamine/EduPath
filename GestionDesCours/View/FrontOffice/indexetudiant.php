@@ -53,6 +53,18 @@ if (isset($_GET['search'])) {
         </div>
         <?php endforeach; ?>
     </main>
+    <div id="chatbot-container">
+    <div id="chatbot-header">
+        <span>EduPath AI Assistant</span>
+        <button id="close-chatbot">X</button>
+    </div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input">
+        <input type="text" id="chatbot-query" placeholder="Posez-moi une question..." />
+        <button id="send-chatbot">Envoyer</button>
+    </div>
+</div>
+<button id="open-chatbot">💬</button>
   <script src="script.js"></script>
   <!-- Footer -->
   <footer class="footer">

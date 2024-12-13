@@ -31,7 +31,7 @@ if (isset($_GET['id'])) {
     </div>
     <div>
         <label for="cardCVC">CVC:</label>
-        <input type="text" id="cardCVC" name="card_cvc" required>
+        <input type="password" id="cardCVC" name="card_cvc" required>
     </div>
     <button type="submit">Pay Now</button>
 </form>

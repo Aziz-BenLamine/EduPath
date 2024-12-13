@@ -7,6 +7,13 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 $courseController = new CoursController();
+if(isset($_GET['user'])){
+    $user=$_GET['user'];
+}
+else{
+    $user=1111111111;
+}
+
 
 $cours=$courseController->getCoursById($_GET['id']);
 $titre=$cours['titre'];
@@ -40,7 +47,7 @@ try {
 } catch (Exception $e) {
     echo "Failed to send confirmation email. Mailer Error: {$mail->ErrorInfo}";
 }
-header('Location: courstuteur.php?id=' . $cours['categorie']);
+header('Location: courstuteur.php?id=' . $cours['categorie'].'&user='. $user);
 }
 else{
     echo "Erreur";

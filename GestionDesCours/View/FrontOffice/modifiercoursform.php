@@ -9,7 +9,8 @@ if (isset($_GET['id'])) {
 }
  require_once '../../Controller/courscontroller.php';
     $coursController = new CoursController();
-    $cours = $coursController->affichercours($cat_id);
+    $userid = $_GET['user'];
+    $cours = $coursController->affichercourst($cat_id, $userid);
 $currentcourse = null;
 if (isset($_GET['idcours'])) {
     $id = $_GET['idcours'];
@@ -59,7 +60,7 @@ if (isset($_GET['idcours'])) {
     <?php endforeach; ?>
         </div>
 
-        <form class="form-container" id="editCourseForm" style="display: block;" action="modifiercours.php" method="post">
+        <form class="form-container" id="editCourseForm" style="display: block;" action="modifiercours.php?user=<?php echo $currentcourse['userid']?>" method="post">
             <h2>Modifier un Cours</h2>
     <input type="number" id="courseId" name="courseId" value="<?php echo $currentcourse['id']?>" readonly >
             <input type="text" id="courseTitle" name="courseTitle" value="<?php echo $currentcourse['titre']?>" >
@@ -80,7 +81,7 @@ if (isset($_GET['idcours'])) {
 
         <div style="text-align: center; margin-top: 20px;">
             <button class="blue-button" onclick="addNewCourse()">Ajouter un Nouveau Cours</button>
-            <a class="blue-button" href="indextuteur.php">retour</a>
+            <a class="blue-button" href="indextuteur.php?user=<?php echo $currentcourse['userid']?>">retour</a>
         </div>
     </main>
 

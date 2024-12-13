@@ -8,14 +8,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $niveau = $_POST['courseLevel'];
     $prix = $_POST['coursePrice'];
     $categorie = $_POST['courseCategory'];
+    $userid = $_GET['user'];
     
-    $cours = new Cours($id, $titre, $description, $niveau, $prix, $categorie);
+    $cours = new Cours($id, $titre, $description, $niveau, $prix, $categorie , $userid);
     $cours->setTitre($titre);
     $cours->setDescription($description);
     $cours->setNiveau($niveau);
     $cours->setPrix($prix);
     $cours->setCategorie($categorie);
+    $cours->setUserId($userid);
     
     $courseController->modifiercours($cours, $id);
-    header('Location: courstuteur.php?id='.$categorie);
+    header('Location: courstuteur.php?id='.$categorie .'&user='.$userid);
 }

@@ -2,6 +2,12 @@
 require_once '../../Controller/categoriescontroller.php';
 $CategoriesController = new CategoriesController();
 $categories = $CategoriesController->affichercategories();
+if (isset($_GET['user'])) {
+    $user = $_GET['user'];
+}
+else{
+    $user = 1;
+}
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
     $categories = $CategoriesController->searchCategories($search);
@@ -47,7 +53,7 @@ if (isset($_GET['search'])) {
         <div class="course">
             <h2><?php echo $categorie['titre']; ?></h2>
             <p><?php echo $categorie['description']; ?></p>
-            <a class="blue-button" href="courstuteur.php?id=<?php echo $categorie['id'] ?>">afficher mes cours</a>
+            <a class="blue-button" href="courstuteur.php?id=<?php echo $categorie['id'] ?>&user=<?php echo $user?>">afficher mes cours</a>
             
             
         </div>

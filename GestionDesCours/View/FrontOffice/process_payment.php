@@ -1,7 +1,11 @@
 <?php
+require_once '../../controller/courscontroller.php';
+$courscontroller = new CoursController();
 $id=$_GET['id'];
+$cours=$courscontroller->getCoursById($_POST['course_id']);
+$titre=$cours['titre'];
+$prix=$cours['prix'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
     $courseId = $_POST['course_id'];
     $cardNumber = $_POST['card_number'];
     $expiryDate = $_POST['card_expiry'];
@@ -56,8 +60,8 @@ try {
     // Content
     $mail->isHTML(true);
     $mail->Subject = 'Payment Confirmation';
-    $mail->Body    = "Dear Student,<br><br>Your payment for course ID $courseId has been successfully processed.<br><br>Thank you!";
-    $mail->AltBody = "Dear Student,\n\nYour payment for course ID $courseId has been successfully processed.\n\nThank you!";
+    $mail->Body    = "Dear Student,<br><br>Your payment for course $titre has been successfully processed.<br><br>The price: $prix Dt<br><br>Thank you!";
+    $mail->AltBody = "Dear Student,<br><br>Your payment for course $titre has been successfully processed.<br><br>The price: $prix Dt<br><br>Thank you!";
 
     $mail->send();
     echo 'A confirmation email has been sent.';

@@ -1,6 +1,6 @@
 <?php
 require_once '../../Controller/pdfcontroller.php';
-
+$user=$_GET['user'];
 // Ensure the uploads directory exists
 if (!is_dir('uploads')) {
     mkdir('uploads', 0777, true);
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $idcay=$_GET['idcat'];
             $pdfController->ajouterpdf($pdf);
             echo "Files have been uploaded and saved successfully.";
-            header('Location: courstuteur.php?id='.$idcay);
+            header('Location: courstuteur.php?id='.$idcay.'&user='.$user);
         } else {
             echo "Failed to move uploaded files.";
         }

@@ -2,14 +2,15 @@
 require_once '../../Controller/courscontroller.php';
 require_once '../../Controller/categoriescontroller.php';
 
-
+$user=$_GET['user'];
     $cours= new Cours(
         1,
         $_POST['courseTitle'],
         $_POST['courseDescription'],
         $_POST['courseLevel'],
         $_POST['coursePrice'],
-        $_POST['courseCategory']
+        $_POST['courseCategory'],
+        $_GET['user']
     );
     $categoriesController = new CategoriesController();
     $courseController = new CoursController();
@@ -51,5 +52,5 @@ try {
 } catch (Exception $e) {
     echo "Failed to send confirmation email. Mailer Error: {$mail->ErrorInfo}";
 }
-    header('Location: courstuteur.php?id='.$_POST['courseCategory']);
+    header('Location: courstuteur.php?id='.$_POST['courseCategory']."&user=".$user);
 ?>

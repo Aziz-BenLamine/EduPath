@@ -1,7 +1,5 @@
 <?php
 
-require_once 'categories.php';
-
 class Cours{
     public $id;
     public $titre;
@@ -9,14 +7,16 @@ class Cours{
     public $niveau;
     public $prix;
     public $categorie;
+    public $userId;
 
-    public function __construct($id,$titre,$description,$niveau,$prix,$categorie){
-        $this->id=$id;
-        $this->titre=$titre;
-        $this->description=$description;
-        $this->niveau=$niveau;
-        $this->prix=$prix;
-        $this->categorie=$categorie;
+    public function __construct($id, $titre, $description, $niveau, $prix, $categorie, $userId){
+        $this->id = $id;
+        $this->titre = $titre;
+        $this->description = $description;
+        $this->niveau = $niveau;
+        $this->prix = $prix;
+        $this->categorie = $categorie;
+        $this->userId = $userId;
     }
 
     public function getId(){
@@ -37,22 +37,28 @@ class Cours{
     public function getCategorie(){
         return $this->categorie;
     }
+    public function getUserId(){
+        return $this->userId;
+    }
     public function setId($id){
-        $this->id=$id;
+        $this->id = $id;
     }
     public function setTitre($titre){
-        $this->titre=$titre;
+        $this->titre = $titre;
     }
     public function setDescription($description){
-        $this->description=$description;
+        $this->description = $description;
     }
     public function setNiveau($niveau){
-        $this->niveau=$niveau;
+        $this->niveau = $niveau;
     }
     public function setPrix($prix){
-        $this->prix=$prix;
+        $this->prix = $prix;
     }
     public function setCategorie($categorie){
-        $this->categorie=$categorie;
+        $this->categorie = $categorie;
+    }
+    public function setUserId($userId){
+        $this->userId = $userId;
     }
 }
