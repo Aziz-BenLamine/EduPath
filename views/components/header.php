@@ -17,9 +17,14 @@
       <a href="#">Quiz</a>
       <a href="/Edupath/views/sujets/forum_home.php">Forum</a>
       <a href="#">Enseigner</a>
-      <a href="#">Reclamation</a>
-      <a href="#">Se connecter</a>
-      <a href="#" class="btn-primary">S'inscrire</a>
+      <div class="dropdown">
+        <button class="dropbtn">Réclamation</button>
+        <div class="dropdown-content">
+          <a href="/Edupath/views/Frontoffice/addRec.php">Ajouter Réclamation</a>
+          <a href="/Edupath/views/Frontoffice/Reclist.php">Liste des Réclamations</a>
+        </div>
+      </div>
+      <a href="..\EduPath\views\Frontoffice\role_selection.html" class="btn-primary">S'inscrire</a>
     </nav>
   </header>
 </body>
