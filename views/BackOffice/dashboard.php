@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../controllers/UserController.php';
 require_once __DIR__ . '/../../controllers/ProfessorController.php';
 
 try {
-    $conn = getDatabaseConnection();
+    $conn = config::getConnexion();
 } catch (Exception $e) {
     die("Database connection error: " . $e->getMessage());
 }
@@ -62,6 +62,7 @@ $totalProfessors = $professorController->countProfessors();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,15 +74,19 @@ $totalProfessors = $professorController->countProfessors();
             background-color: #f4f4f9;
             color: #333;
         }
-        h1, h2 {
+
+        h1,
+        h2 {
             text-align: center;
         }
+
         .statistics {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin: 20px 0;
         }
+
         .stat-box {
             background-color: #9a8c98;
             color: #fff;
@@ -90,31 +95,39 @@ $totalProfessors = $professorController->countProfessors();
             text-align: center;
             width: 200px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        th, td {
+
+        th,
+        td {
             padding: 10px;
             text-align: left;
             border: 1px solid #ddd;
         }
+
         tbody tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         tbody tr:hover {
             background-color: #e2e2e2;
         }
+
         form {
             margin: 20px 0;
         }
+
         input[type="text"] {
             padding: 10px;
             width: 250px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
         button {
             padding: 10px 20px;
             background-color: #4a4e69;
@@ -123,12 +136,15 @@ $totalProfessors = $professorController->countProfessors();
             border-radius: 4px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #6b5b95;
         }
+
         .edit-button {
             background-color: #f4c430;
         }
+
         .no-result {
             text-align: center;
             color: red;
@@ -137,7 +153,9 @@ $totalProfessors = $professorController->countProfessors();
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
+    <?php include 'C:\xampp\htdocs\EduPath\views/components/sidebar.php'; ?>
     <h1>Dashboard</h1>
 
     <!-- Statistics -->
@@ -292,10 +310,13 @@ $totalProfessors = $professorController->countProfessors();
             options: {
                 responsive: true,
                 scales: {
-                    y: { beginAtZero: true }
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
         });
     </script>
 </body>
+
 </html>

@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../config.php';
 require_once __DIR__ . '/../../controllers/ProfessorController.php';
 
 try {
-    $conn = getDatabaseConnection();
+    $conn = config::getConnexion();
 } catch (Exception $e) {
     die("Database connection error: " . $e->getMessage());
 }
@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_professor'])) 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,9 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_professor'])) 
             background-color: #f4f4f9;
             color: #333;
         }
-        h1, h2 {
+
+        h1,
+        h2 {
             text-align: center;
         }
+
         form {
             max-width: 500px;
             margin: 0 auto;
@@ -71,14 +75,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_professor'])) 
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         form div {
             margin-bottom: 15px;
         }
+
         form label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
+
         form input[type="text"],
         form input[type="email"] {
             width: 100%;
@@ -86,6 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_professor'])) 
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
         form button {
             padding: 10px 20px;
             background-color: #4a4e69;
@@ -94,22 +102,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_professor'])) 
             border-radius: 4px;
             cursor: pointer;
         }
+
         form button:hover {
             background-color: #6b5b95;
         }
+
         .message {
             text-align: center;
             font-weight: bold;
             margin-bottom: 15px;
         }
+
         .success {
             color: green;
         }
+
         .error {
             color: red;
         }
     </style>
 </head>
+
 <body>
     <h1>Edit Professor</h1>
 
@@ -143,4 +156,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_professor'])) 
         <p class="error">No professor found to edit. Please go back and try again.</p>
     <?php endif; ?>
 </body>
+
 </html>

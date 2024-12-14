@@ -35,8 +35,9 @@
       <img src="/EduPath/views/components/EduPathLogo.png" alt="EduPath Logo" />
       <span>EduPath</span>
     </div>
-    <a href="#home" class="active"><i class="fas fa-users"></i> Gestion des utilisateurs</a>
-    <a href="#services"><i class="fas fa-book"></i> Gestion des categories et des cours</a>
+    <a href="/EduPath/views/BackOffice/dashboard.php" class="active"><i class="fas fa-users"></i> Gestion des utilisateurs</a>
+    <a href="/EduPath/GestionDesCours/View/BackOffice/indexadmin.php">Gestion des categories</a>
+    <a href="/EduPath/GestionDesCours/View/BackOffice/gesctioncours.php"><i class="fas fa-book"></i> Gestion des cours</a>
     <a href="/EduPath/views/BackOffice/GestionForum/forumAdmin.php?page=publication"><i class="fas fa-comments"></i> Gestion du forum</a>
     <a href="#contact"><i class="fas fa-question-circle"></i> Gestion des quizs</a>
     <a href="/EduPath/views/BackOffice/listeRec.php" class="active"><i class="fas fa-exclamation-triangle"></i> Gestion des reclamations</a>
