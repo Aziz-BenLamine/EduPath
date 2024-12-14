@@ -16,7 +16,7 @@
     </a>
     <nav class="nav">
       <a href="/Edupath/GestionDesCours/View/FrontOffice/indexetudiant.php">Cours</a>
-      <a href="#">Quiz</a>
+      <a href="..\EduPath\quizznourane\view\index.php">Quiz</a>
       <a href="/Edupath/views/sujets/forum_home.php">Forum</a>
       <a href="#">Enseigner</a>
       <div class="dropdown">

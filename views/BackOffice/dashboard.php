@@ -68,11 +68,16 @@ $totalProfessors = $professorController->countProfessors();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <style>
+        .container {
+            display: flex;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             background-color: #f4f4f9;
             color: #333;
+
         }
 
         h1,
@@ -155,7 +160,9 @@ $totalProfessors = $professorController->countProfessors();
 </head>
 
 <body>
+
     <?php include 'C:\xampp\htdocs\EduPath\views/components/sidebar.php'; ?>
+
     <h1>Dashboard</h1>
 
     <!-- Statistics -->
@@ -295,6 +302,7 @@ $totalProfessors = $professorController->countProfessors();
     <!-- Overview Chart -->
     <h2>Overview Chart</h2>
     <canvas id="overviewChart"></canvas>
+
     <script>
         const ctx = document.getElementById('overviewChart').getContext('2d');
         new Chart(ctx, {

@@ -39,7 +39,7 @@
     <a href="/EduPath/GestionDesCours/View/BackOffice/indexadmin.php">Gestion des categories</a>
     <a href="/EduPath/GestionDesCours/View/BackOffice/gesctioncours.php"><i class="fas fa-book"></i> Gestion des cours</a>
     <a href="/EduPath/views/BackOffice/GestionForum/forumAdmin.php?page=publication"><i class="fas fa-comments"></i> Gestion du forum</a>
-    <a href="#contact"><i class="fas fa-question-circle"></i> Gestion des quizs</a>
+    <a href="/EduPath/quizznourane/back.php"><i class="fas fa-question-circle"></i> Gestion des quizs</a>
     <a href="/EduPath/views/BackOffice/listeRec.php" class="active"><i class="fas fa-exclamation-triangle"></i> Gestion des reclamations</a>
     <div class="submenu">
       <a href="/EduPath/views/BackOffice/sidebar/hiddenList.php"><i class="fas fa-eye-slash"></i> Réclamations masquées</a>
