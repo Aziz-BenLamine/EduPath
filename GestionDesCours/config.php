@@ -8,7 +8,7 @@ class config
             $servername = "localhost";
             $username = "root";
             $password = "";
-            $dbname = "cours";
+            $dbname = "edupath";
             try {
                 self::$pdo = new PDO(
                     "mysql:host=$servername;dbname=$dbname",
@@ -18,8 +18,6 @@ class config
                 );
                 self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-
             } catch (Exception $e) {
                 die('Erreur: ' . $e->getMessage());
             }
@@ -28,4 +26,3 @@ class config
     }
 }
 config::getConnexion();
-?>
