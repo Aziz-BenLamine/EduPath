@@ -1,5 +1,5 @@
 <?php
-include '../../controllers/réponseC.php';
+include '../../controllers/réponsesC.php';
 
 $reponseController = new ReponseC();
 
