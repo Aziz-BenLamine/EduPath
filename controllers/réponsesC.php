@@ -4,7 +4,7 @@ include(__DIR__ . '/../models/réponse.php');
 class ReponseC{
     public function ajouterReponse($reponse)
     {
-        $sql = "INSERT INTO reponse (idr,nom_a, id_rec, date_r, contenu)
+        $sql = "INSERT INTO reponserec (idr,nom_a, id_rec, date_r, contenu)
         VALUES (:idr,:nom_a , :id_rec, :date_r, :contenu)";
         $db = config::getConnexion();
         var_dump($reponse->getIdReclamation());
