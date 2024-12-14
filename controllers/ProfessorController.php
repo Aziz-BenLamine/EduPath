@@ -1,12 +1,15 @@
 <?php
-class ProfessorController {
+class ProfessorController
+{
     private $pdo;
 
-    public function __construct(PDO $pdo) {
+    public function __construct(PDO $pdo)
+    {
         $this->pdo = $pdo; // Ensure this matches throughout the class
     }
 
-    public function findProfessorByNameAndPassword($name, $password) {
+    public function findProfessorByNameAndPassword($name, $password)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM professor WHERE name = :name AND password = :password");
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -18,7 +21,8 @@ class ProfessorController {
         }
     }
 
-    public function createProfessor($name, $email, $password, $department) {
+    public function createProfessor($name, $email, $password, $department)
+    {
         try {
             // Directly store the plain-text password
             $stmt = $this->pdo->prepare("INSERT INTO professor (name, email, password, department) VALUES (:name, :email, :password, :department)");
@@ -33,7 +37,8 @@ class ProfessorController {
         }
     }
 
-    public function professorExists($name, $email) {
+    public function professorExists($name, $email)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM professor WHERE name = :name OR email = :email");
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -45,7 +50,8 @@ class ProfessorController {
         }
     }
 
-    public function getAllProfessors() {
+    public function getAllProfessors()
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT id, name, email, department FROM professor");
             $stmt->execute();
@@ -55,7 +61,8 @@ class ProfessorController {
         }
     }
 
-    public function deleteProfessor($id) {
+    public function deleteProfessor($id)
+    {
         try {
             $stmt = $this->pdo->prepare("DELETE FROM professor WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -66,7 +73,8 @@ class ProfessorController {
         }
     }
 
-    public function countProfessors() {
+    public function countProfessors()
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT COUNT(*) AS total FROM professor");
             $stmt->execute();
@@ -75,7 +83,8 @@ class ProfessorController {
             return "Error counting professors: " . $e->getMessage();
         }
     }
-    public function searchProfessorById($id) {
+    public function searchProfessorById($id)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM professor WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -86,4 +95,3 @@ class ProfessorController {
         }
     }
 }
-?>
