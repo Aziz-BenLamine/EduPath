@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Buttons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #6a9afc, #ff4c4c, #7494ec); /* Background gradient matching button colors */
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s ease infinite; /* Smooth background animation */
+            text-align: center;
+            color: #444;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Heading Styling */
+        h1 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for better readability */
+            font-weight: bold;
+        }
+
+        /* Button Container Styling */
+        .button-container {
+            display: flex;
+            gap: 30px;
+            transition: gap 0.3s;
+        }
+
+        .button-container:hover {
+            gap: 60px; /* Increase gap on hover */
+        }
+
+        /* Button Styling */
+        .button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 35px;
+            background-color: #333;
+            color: #fff;
+            font-size: 28px;
+            overflow: hidden;
+            transition: width 0.3s ease, background-color 0.3s ease, transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .button:hover {
+            width: 220px; /* Expand button on hover */
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        /* Button Colors */
+        .button.student:hover {
+            background: linear-gradient(to right, #6a9afc, #7494ec); /* Smooth gradient */
+        }
+
+        .button.professor:hover {
+            background: linear-gradient(to right, #ff4c4c, #d21b1b); /* Smooth gradient */
+        }
+
+        /* Icon Styling */
+        .button .icon {
+            position: absolute;
+            left: 20px;
+        }
+
+        /* Text Styling */
+        .button .text {
+            opacity: 0;
+            visibility: hidden;
+            margin-left: 50px;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .button:hover .text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+            .button-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .button {
+                width: 100%;
+                height: 60px;
+                border-radius: 30px;
+            }
+            .button:hover {
+                width: 100%;
+            }
+            .button .icon {
+                left: 15px;
+            }
+            .button .text {
+                margin-left: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you use our platform as a student or a professor?</h1>
+    <div class="button-container">
+        <!-- Student Button -->
+        <a href="indexform.php" class="button student">
+            <i class="fas fa-user-graduate icon"></i>
+            <span class="text">Student</span>
+        </a>
+
+        <!-- Professor Button -->
+        <a href="professorform.php" class="button professor">
+            <i class="fas fa-chalkboard-teacher icon"></i>
+            <span class="text">Professor</span>
+        </a>
+    </div>
+</body>
+</html>

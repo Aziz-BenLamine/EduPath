@@ -24,8 +24,7 @@
           <a href="/Edupath/views/Frontoffice/Reclist.php">Liste des Réclamations</a>
         </div>
       </div>
-      <a href="#">Se connecter</a>
-      <a href="#" class="btn-primary">S'inscrire</a>
+      <a href="..\EduPath\views\Frontoffice\role_selection.html" class="btn-primary">S'inscrire</a>
     </nav>
   </header>
 </body>

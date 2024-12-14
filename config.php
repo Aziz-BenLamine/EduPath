@@ -1,26 +1,25 @@
 <?php
-class config
-{   private static $pdo = null;
-    public static function getConnexion()
-    {
-        if (!isset(self::$pdo)) {
-            $servername="localhost";
-            $username="root";
-            $password ="";
-            $dbname="complaint";
-            try {
-                self::$pdo = new PDO("mysql:host=$servername;dbname=$dbname",
-                        $username,
-                        $password
-                );
-                self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                self::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            } catch (Exception $e) {
-                die('Erreur: ' . $e->getMessage());
-            }
-        }
-        return self::$pdo;
+
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'edupath');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_CHARSET', 'utf8mb4');
+
+function getDatabaseConnection() {
+    try {
+        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_PERSISTENT => false,
+        ];
+
+        return new PDO($dsn, DB_USER, DB_PASS, $options);
+    } catch (PDOException $e) {
+        error_log("Database connection failed: " . $e->getMessage());
+        throw new Exception("Unable to connect to the database.");
     }
 }
-config::getConnexion();
+
 ?>
