@@ -36,20 +36,7 @@ if (isset($_GET['sort'])) {
 </head>
 
 <body>
-    <header class="header">
-        <a href="/Edupath" class="logo">
-            <img src="/Edupath/views/components/EduPathLogo.png" alt="CheminÉdu Logo">
-            <span>EduPath</span>
-        </a>
-        <nav class="nav">
-            <a class="btn-primary" href="/Edupath/GestionDesCours/View/FrontOffice/indexetudiant.php">Cours</a>
-            <a href="/EduPath/quizznourane/view/index.php">Quiz</a>
-            <a href="/Edupath/views/sujets/forum_home.php">Forum</a>
-            <a href="/Edupath/GestionDesCours/View/FrontOffice/indextuteur.php">Tuteurs</a>
-            <a href="#">Reclamation</a>
-            <a href="#">Mon Compte</a>
-        </nav>
-    </header>
+    <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
     <main>
         <h1>Les Cours</h1>
         <h2>Categorie: <?php echo $currentCategory['titre'] ?></h2>
@@ -61,7 +48,7 @@ if (isset($_GET['sort'])) {
                 <option value="desc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'desc') echo 'selected'; ?>>Descendant</option>
             </select>
             <input type="hidden" name="id" value="<?php echo $cat_id; ?>">
-        </form>>
+        </form>
 
         <div id="courses" class="courses-container">
             <?php foreach ($cours as $course) : ?>

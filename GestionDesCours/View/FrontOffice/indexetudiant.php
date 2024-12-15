@@ -2,6 +2,7 @@
 require_once '../../Controller/categoriescontroller.php';
 $CategoriesController = new CategoriesController();
 $categories = $CategoriesController->affichercategories();
+
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
     $categories = $CategoriesController->searchCategories($search);
@@ -23,20 +24,7 @@ if (isset($_GET['search'])) {
 </head>
 
 <body>
-    <header class="header">
-        <a href="/Edupath" class="logo">
-            <img src="/Edupath/views/components/EduPathLogo.png" alt="CheminÉdu Logo">
-            <span>EduPath</span>
-        </a>
-        <nav class="nav">
-            <a class="btn-primary" href="/Edupath/GestionDesCours/View/FrontOffice/indexetudiant.php">Cours</a>
-            <a href="/EduPath/quizznourane/view/index.php">Quiz</a>
-            <a href="/Edupath/views/sujets/forum_home.php">Forum</a>
-            <a href="/Edupath/GestionDesCours/View/FrontOffice/indextuteur.php">Tuteurs</a>
-            <a href="#">Reclamation</a>
-            <a href="#">Mon Compte</a>
-        </nav>
-    </header>
+    <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
     <main>
         <h1>Liste des Categories</h1>
         <div style="margin-bottom: 20px; text-align: center; color: #000;">

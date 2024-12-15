@@ -59,8 +59,11 @@ $publications = array_slice($publications, $offset, $items_per_page);
     <link rel="stylesheet" type="text/css" href="/Edupath/css/publications.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-
-
+        .flexflex {
+            display: flex;
+            flex-direction: row-reverse;
+            align-content: space-between;
+        }
     </style>
 </head>
 
@@ -110,10 +113,12 @@ $publications = array_slice($publications, $offset, $items_per_page);
                             </div>
                             <a href="/Edupath/views/reponses/reponsesView.php?id=<?= $publication['id'] ?>"><?= $publication['contenu'] ?></a>
                             <?php if ($_SESSION['id'] == $publication['cree_par']): ?>
-                                <a class="supprimer-modifier"
-                                    href="/Edupath/views/publications/supprimerPublication.php?id=<?= $publication['id'] ?>&id_sujet=<?= $id_sujet ?>">Supprimer</a>
-                                <a class="supprimer-modifier"
-                                    href="/Edupath/views/publications/modifierPublication.php?id=<?= $publication['id'] ?>&id_sujet=<?= $id_sujet ?>">Modifier</a>
+                                <div class="flexflex">
+                                    <a class="supprimer-modifier"
+                                        href="/Edupath/views/publications/supprimerPublication.php?id=<?= $publication['id'] ?>&id_sujet=<?= $id_sujet ?>">Supprimer</a>
+                                    <a class="supprimer-modifier"
+                                        href="/Edupath/views/publications/modifierPublication.php?id=<?= $publication['id'] ?>&id_sujet=<?= $id_sujet ?>">Modifier</a>
+                                </div>
                             <?php endif; ?>
                         </li>
                     <?php endforeach; ?>

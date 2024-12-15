@@ -1,10 +1,9 @@
-
 <?php
-  include __DIR__ . '/../model/quizModel.php';
-  include __DIR__ . '/../controleur/quizControler.php';
-  include_once '../config.php';
+include __DIR__ . '/../model/quizModel.php';
+include __DIR__ . '/../controleur/quizControler.php';
+include_once '../config.php';
 
-  
+
 $question = new quizs();
 $result = $question->affichequestion(); // Get the list of questions
 
@@ -51,7 +50,6 @@ if ($id_question) {
     } else {
         //echo "<p style='color: red;'>You have reached the maximum number of responses for this question.</p>";
         header('Location: \dashboard\quizznourane\sidebar.php');
-        
     }
 } else {
     echo "<p style='color: red;'>Invalid or missing question ID.</p>";
@@ -62,6 +60,7 @@ if ($id_question) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,6 +71,7 @@ if ($id_question) {
             background-color: #f4f4f9;
             padding: 20px;
         }
+
         .form-container {
             max-width: 400px;
             margin: 0 auto;
@@ -80,59 +80,67 @@ if ($id_question) {
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+
         h1 {
             text-align: center;
         }
+
         label {
             font-weight: bold;
         }
-        input, select, button {
+
+        input,
+        select,
+        button {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+
         button {
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
         <h1>Ajouter une Reponse</h1>
-        <form  onsubmit="return validateQuiz();" action="" method="POST">
-            
+        <form onsubmit="return validateQuiz();" action="" method="POST">
+
 
             <label for="reponse">reponse: </label>
-            <input type="text" id="reponse" name="reponse" placeholder="Entrez la reponse" >
+            <input type="text" id="reponse" name="reponse" placeholder="Entrez la reponse">
 
 
 
             <label for="score">score: </label>
-            <input type="text" id="score" name="score" placeholder="Entrez la titre" >
+            <input type="text" id="score" name="score" placeholder="Entrez la titre">
 
 
             <label for="correction">correction: </label>
-            <input type="text" id="correction" name="correction" placeholder="Entrez la description" >
+            <input type="text" id="correction" name="correction" placeholder="Entrez la description">
 
 
             <label for="id_question">ID Question : </label>
             <select id="id_question" name="id_question">
                 <option value="">-- Sélectionnez une question --</option>
                 <?php
-                    
-                    
 
-                    foreach ($result as $row) {
-                        echo '<option value="' . htmlspecialchars($row['idq']) . '">' . htmlspecialchars($row['idq']) . '</option>';
-                    }
+
+
+                foreach ($result as $row) {
+                    echo '<option value="' . htmlspecialchars($row['idq']) . '">' . htmlspecialchars($row['idq']) . '</option>';
+                }
                 ?>
             </select>
 
@@ -140,46 +148,46 @@ if ($id_question) {
             <button type="submit" name="submit">Ajouter</button>
         </form>
     </div>
-    <script> 
+    <script>
         function validateQuiz() {
-        // Récupérer les champs du formulaire
-        const titre = document.getElementById('titre').value.trim();
-        const description = document.getElementById('description').value.trim();
-        const categorie = document.getElementById('categorie').value.trim();
-        const image = document.getElementById('image').value.trim();
+            // Récupérer les champs du formulaire
+            const titre = document.getElementById('titre').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const categorie = document.getElementById('categorie').value.trim();
+            const image = document.getElementById('image').value.trim();
 
-    // Validation
-    let test = true;
+            // Validation
+            let test = true;
 
-    // Validation du titre (doit contenir uniquement des lettres et espaces)
-    let expr = /^[A-Za-z\s]+$/;
-    if (!expr.test(titre) || titre === "") {
-        alert("Le titre n'est pas valide. Il doit contenir uniquement des lettres et des espaces.");
-        test = false;
-    }
+            // Validation du titre (doit contenir uniquement des lettres et espaces)
+            let expr = /^[A-Za-z\s]+$/;
+            if (!expr.test(titre) || titre === "") {
+                alert("Le titre n'est pas valide. Il doit contenir uniquement des lettres et des espaces.");
+                test = false;
+            }
 
-    // Validation de la description (doit être remplie)
-    else if (description === "") {
-        alert("La description ne peut pas être vide.");
-        test = false;
-    }
+            // Validation de la description (doit être remplie)
+            else if (description === "") {
+                alert("La description ne peut pas être vide.");
+                test = false;
+            }
 
-    // Validation de la catégorie (doit être remplie)
-    else if (categorie === "") {
-        alert("La catégorie ne peut pas être vide.");
-        test = false;
-    }
+            // Validation de la catégorie (doit être remplie)
+            else if (categorie === "") {
+                alert("La catégorie ne peut pas être vide.");
+                test = false;
+            }
 
-    // Validation de l'image (doit être sélectionnée)
-    else if (image === "") {
-        alert("Vous devez sélectionner une image.");
-        test = false;
-    }
+            // Validation de l'image (doit être sélectionnée)
+            else if (image === "") {
+                alert("Vous devez sélectionner une image.");
+                test = false;
+            }
 
-    // Retourne `false` si une validation échoue pour empêcher la soumission du formulaire
-    return test;
+            // Retourne `false` si une validation échoue pour empêcher la soumission du formulaire
+            return test;
         }
-        
-</script>
+    </script>
 </body>
+
 </html>

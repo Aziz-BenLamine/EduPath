@@ -31,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($professor) {
                 $_SESSION['username'] = $username;
-                header("Location: welcomeuser/index.html?username=" . urlencode($username)); // Redirect to user page
+                $_SESSION['id'] = $professorController->getProfessorByUsername($username)['id'];
+                header("Location: http://localhost/Edupath/GestionDesCours/view/FrontOffice/indextuteur.php"); // Redirect to user page
                 exit;
             } else {
                 $message = "Invalid username or password.";

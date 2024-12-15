@@ -134,7 +134,7 @@ class quizs
 
     public function addReponse($reponse)
     {
-        $sql = "INSERT INTO reponse (reponseText, score, correction , id_question ) VALUES (:reponseText, :score, :correction , :id_question)";
+        $sql = "INSERT INTO reponsequiz (reponseText, score, correction , id_question ) VALUES (:reponseText, :score, :correction , :id_question)";
         $conn = config::getConnexion();
         try {
             $query = $conn->prepare($sql);
@@ -168,7 +168,7 @@ class quizs
     }
     public function getResponseCountForQuestion($id_question)
     {
-        $sql = "SELECT COUNT(*) FROM reponse WHERE id_question = :id_question";
+        $sql = "SELECT COUNT(*) FROM reponsequiz WHERE id_question = :id_question";
         $conn = config::getConnexion();  // Get the database connection
 
         try {

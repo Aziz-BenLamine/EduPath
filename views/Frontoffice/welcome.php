@@ -13,6 +13,7 @@ $username = $_SESSION['username'];
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +21,7 @@ $username = $_SESSION['username'];
     <title>Welcome</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Hello, <?= htmlspecialchars($username) ?>!</h1>
@@ -27,4 +29,5 @@ $username = $_SESSION['username'];
         <a href="logout.php" class="btn">Logout</a>
     </div>
 </body>
+
 </html>

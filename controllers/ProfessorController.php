@@ -7,7 +7,19 @@ class ProfessorController
     {
         $this->pdo = $pdo; // Ensure this matches throughout the class
     }
-
+    public function getProfessorByUsername($username)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM professor WHERE name = :username");
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $user ?: null; // Return null if no user is found
+        } catch (PDOException $e) {
+            // Handle the exception
+            throw new Exception("Error fetching professor by username: " . $e->getMessage());
+        }
+    }
     public function findProfessorByNameAndPassword($name, $password)
     {
         try {

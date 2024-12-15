@@ -93,18 +93,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
 </head>
 
 <body>
-    <div class="sidebar" role="navigation" aria-label="Sidebar">
-        <div class="logo">
-            <img src="EduPathLogo.png" alt="EduPath Logo" />
-            <span>EduPath</span>
-        </div>
-        <a href="#home" class="active"><i class="fas fa-users"></i> Gestion des utilisateurs</a>
-        <a href="#services"><i class="fas fa-book"></i> Gestion des categories et des cours</a>
-        <a href="#clients"><i class="fas fa-comments"></i> Gestion du forum</a>
-        <a href="#quiz" id="quizLink"><i class="fas fa-question-circle"></i> Gestion des quizs</a>
-        <a href="#contact"><i class="fas fa-exclamation-triangle"></i> Gestion des reclamations</a>
-    </div>
-    <button class="toggle-btn">&#9664;</button>
+    <?php include 'C:\xampp\htdocs\EduPath\views/components/sidebar.php'; ?>
+
 
     <div class="content">
 

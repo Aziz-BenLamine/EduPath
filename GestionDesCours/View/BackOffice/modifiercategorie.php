@@ -1,26 +1,27 @@
 <?php
-include_once 'D:\server\htdocs\GestionDesCours\Controller\categoriescontroller.php';
+include_once '/xampp/htdocs/EduPath/GestionDesCours\Controller\categoriescontroller.php';
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 $categoryController = new CategoriesController();
 $Categorie = $categoryController->getCategoriesById($_POST['id']);
-$tit=$Categorie['titre'];
-$desc=$Categorie['description'];
+$tit = $Categorie['titre'];
+$desc = $Categorie['description'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $titre = $_POST['titre'];
     $description = $_POST['description'];
-    
+
     $category = new Categorie($id, $titre, $description);
     $category->setTitre($titre);
     $category->setDescription($description);
-    
+
     $categoryController->modifiercategories($category, $id);
-    
 }
 
 

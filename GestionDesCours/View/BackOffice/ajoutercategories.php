@@ -1,5 +1,5 @@
 <?php
-include_once 'D:\server\htdocs\GestionDesCours\Controller\categoriescontroller.php';
+include_once '/xampp/htdocs/EduPath/GestionDesCours\Controller\categoriescontroller.php';
 
 
 $categoriesController = new CategoriesController();
@@ -10,9 +10,10 @@ $categorie = new Categorie(
     $_POST['categoryTitle'],
     $_POST['categoryDescription']
 );
-$titre=$_POST['categoryTitle'];
+$titre = $_POST['categoryTitle'];
 var_dump($categorie);
 $categoriesController->ajoutercategories($categorie);
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -49,4 +50,3 @@ try {
 }
 
 header('location: indexadmin.php');
-?>
