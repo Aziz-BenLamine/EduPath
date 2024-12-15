@@ -3,7 +3,7 @@ include '../../controllers/réclamationC.php';
 
 $reclamationController = new ReclamationC();
 $error = "";
-$reclamation=null;
+$reclamation = null;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $reclamation = $reclamationController->afficherReclamation($id);
@@ -14,7 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         isset($_POST["id"]) && isset($_POST["nom"]) && isset($_POST["date_c"]) && isset($_POST["email"]) && isset($_POST["sujet"]) && isset($_POST["descript"]) && isset($_POST["tel"]) && isset($_POST["statut"]) && isset($_POST["is_visible"])
     ) {
         if (
-            !empty($_POST["nom"]) && !empty($_POST["date_c"]) && !empty($_POST["email"]) && !empty($_POST["sujet"]) && !empty($_POST["descript"]) && !empty($_POST["tel"]) && !empty($_POST["statut"]) && !empty($_POST["is_visible"])){
+            !empty($_POST["nom"]) && !empty($_POST["date_c"]) && !empty($_POST["email"]) && !empty($_POST["sujet"]) && !empty($_POST["descript"]) && !empty($_POST["tel"]) && !empty($_POST["statut"]) && !empty($_POST["is_visible"])
+        ) {
             $reclamation = new Reclamation(
                 $_POST['id'],
                 $_POST['nom'],
@@ -37,13 +38,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier Réclamation</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleRec.css">
     <script src="addRec.js" defer></script>
 </head>
+
 <body>
     <div class="container">
         <h2>Modifier Réclamation</h2>
@@ -72,14 +75,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label for="descript">Message</label>
-                <textarea id="descript" name="descript" ><?php echo ($reclamation['descript']); ?></textarea>
+                <textarea id="descript" name="descript"><?php echo ($reclamation['descript']); ?></textarea>
             </div>
             <div class="form-group">
                 <label for="tel">Numéro de Téléphone</label>
-                <input type="tel" id="tel" name="tel" value="<?php echo ($reclamation['tel']); ?>" >
+                <input type="tel" id="tel" name="tel" value="<?php echo ($reclamation['tel']); ?>">
             </div>
             <button class="btn" type="submit">Modifier</button>
         </form>
     </div>
 </body>
+
 </html>

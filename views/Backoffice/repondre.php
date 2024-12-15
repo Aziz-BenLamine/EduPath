@@ -1,6 +1,6 @@
 <?php
-include '../../controllers/réponsesC.php';
-include '../../controllers/réclamationC.php';
+include '/xampp/htdocs/EduPath/controllers/réponsesC.php';
+include '/xampp/htdocs/EduPath/controllers/réclamationC.php';
 include 'mail.php';
 $reponseController = new ReponseC();
 $reclamationController = new ReclamationC();
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e6f7ff; /* Bleu clair */
+            background-color: #e6f7ff;
+            /* Bleu clair */
             margin: 0;
             padding: 0;
             display: flex;
@@ -82,28 +84,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            color: #0056b3; /* Bleu foncé */
+            color: #0056b3;
+            /* Bleu foncé */
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #b3d9ff; /* Bordure bleu clair */
+            border: 1px solid #b3d9ff;
+            /* Bordure bleu clair */
             border-radius: 4px;
             box-sizing: border-box;
         }
 
         .form-group textarea {
-            height: 150px; /* Augmente la hauteur de la zone de texte */
+            height: 150px;
+            /* Augmente la hauteur de la zone de texte */
         }
 
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: #0056b3; /* Bordure bleu foncé au focus */
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #0056b3;
+            /* Bordure bleu foncé au focus */
             outline: none;
         }
 
         .btn {
-            background-color: #0056b3; /* Bleu foncé */
+            background-color: #0056b3;
+            /* Bleu foncé */
             color: #fff;
             padding: 10px 15px;
             border: none;
@@ -114,17 +123,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .btn:hover {
-            background-color: #004494; /* Bleu encore plus foncé au survol */
+            background-color: #004494;
+            /* Bleu encore plus foncé au survol */
         }
+
         .btn:disabled {
-            background-color: #b3b3b3; /* Gris */
+            background-color: #b3b3b3;
+            /* Gris */
             cursor: not-allowed;
         }
+
         .error {
             color: red;
             margin-bottom: 15px;
             text-align: center;
         }
+
         .info p {
             margin: 5px 0;
         }
@@ -132,6 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .info p span {
             font-weight: bold;
         }
+
         .error-message {
             color: red;
             font-size: 12px;
@@ -139,8 +154,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
         <div class="info">
             <h2>Informations de la Réclamation</h2>
             <?php if (isset($reclamation)) { ?>
@@ -162,28 +178,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="error"><?php echo htmlspecialchars($error); ?></div>
             <?php } ?>
             <?php if (isset($reclamation)) { ?>
-            <form id="reponseForm" action="repondre.php?id=<?php echo htmlspecialchars($reclamation['id']); ?>" method="post">
-                <div class="form-group">
-                    <input type="hidden" id="idr" name="idr">
-                    <label for="name_a">Nom de l'Administrateur</label>
-                    <input type="text" id="name_a" name="name_a" onkeyup="validateName()">
-                    <div class="error-message" id="name-error"></div>
-                </div>
-                <div class="form-group">
-                    <label for="date_r">Date</label>
-                    <input type="date" id="date_r" name="date_r" onchange="validateDate()">
-                    <div class="error-message" id="date-error"></div>
-                </div>
-                <div class="form-group">
-                    <label for="contenu">Réponse</label>
-                    <textarea id="contenu" name="contenu" onkeyup="validateContenu()"></textarea>
-                    <div class="error-message" id="contenu-error"></div>
-                </div>
-                <button class="btn" type="submit" id="submitBtn" onclick="validateForm(event)">Envoyer</button>
-            </form>
+                <form id="reponseForm" action="repondre.php?id=<?php echo htmlspecialchars($reclamation['id']); ?>" method="post">
+                    <div class="form-group">
+                        <input type="hidden" id="idr" name="idr">
+                        <label for="name_a">Nom de l'Administrateur</label>
+                        <input type="text" id="name_a" name="name_a" onkeyup="validateName()">
+                        <div class="error-message" id="name-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_r">Date</label>
+                        <input type="date" id="date_r" name="date_r" onchange="validateDate()">
+                        <div class="error-message" id="date-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contenu">Réponse</label>
+                        <textarea id="contenu" name="contenu" onkeyup="validateContenu()"></textarea>
+                        <div class="error-message" id="contenu-error"></div>
+                    </div>
+                    <button class="btn" type="submit" id="submitBtn" onclick="validateForm(event)">Envoyer</button>
+                </form>
             <?php } ?>
         </div>
     </div>
     <script src="cntrl.js"></script>
 </body>
+
 </html>

@@ -41,13 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $admin = $userController->findAdminByUsernameAndPassword($username, $password);
 
         if ($user) {
-            /*header("Location: http://localhost/EduPath/");*/
             $_SESSION['username'] = $username;
             $_SESSION['id'] = $userController->getUserByUsername($username)['id'];
             header("Location: http://localhost/EduPath/views/Frontoffice/welcomeuser/index.html?username=" . urlencode($username));
             exit;
         } elseif ($admin) {
-            header("Location: /template/registerform/views/backoffice/sidebar/sidebar.html");
+            header("Location: http://localhost/EduPath/views/BackOffice/dashboard.php");
             exit;
         } else {
             echo "<script>alert('Invalid username or password.')</script>";

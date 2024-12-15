@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Sujets
 require_once "/xampp/htdocs/EduPath/controllers/sujetForumC.php";
 $sujetsC = new sujetForumC();
@@ -109,12 +109,12 @@ $publications = array_slice($publications, $offset, $items_per_page);
                                 <div><?= $publicationC->timeAgo($publication['date_creation']) ?></div>
                             </div>
                             <a href="/Edupath/views/reponses/reponsesView.php?id=<?= $publication['id'] ?>"><?= $publication['contenu'] ?></a>
-                            <a class="supprimer-modifier"
-                                href="/Edupath/views/publications/supprimerPublication.php?id=<?php echo $publication['id'] ?>
-                                                                                         &id_sujet=<?php echo $id_sujet ?>">Supprimer</a>
-                            <a class="supprimer-modifier"
-                                href="/Edupath/views/publications/modifierPublication.php?id=<?php echo $publication['id'] ?>
-                                                                                         &id_sujet=<?php echo $id_sujet ?>">Modifier</a>
+                            <?php if ($_SESSION['id'] == $publication['cree_par']): ?>
+                                <a class="supprimer-modifier"
+                                    href="/Edupath/views/publications/supprimerPublication.php?id=<?= $publication['id'] ?>&id_sujet=<?= $id_sujet ?>">Supprimer</a>
+                                <a class="supprimer-modifier"
+                                    href="/Edupath/views/publications/modifierPublication.php?id=<?= $publication['id'] ?>&id_sujet=<?= $id_sujet ?>">Modifier</a>
+                            <?php endif; ?>
                         </li>
                     <?php endforeach; ?>
                 </ul>

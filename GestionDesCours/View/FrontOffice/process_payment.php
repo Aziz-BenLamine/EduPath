@@ -1,10 +1,19 @@
 <?php
 require_once '../../controller/courscontroller.php';
+require_once '/xampp/htdocs/EduPath/controllers/UserController.php';
+require_once __DIR__ . '/../../config.php';
+
+$conn = config::getConnexion();
+session_start();
+$id_user = $_SESSION['id'];
+$user_controller = new UserController($conn);
+$et = $user_controller->getUserById($id_user);
+
 $courscontroller = new CoursController();
-$id=$_GET['id'];
-$cours=$courscontroller->getCoursById($_POST['course_id']);
-$titre=$cours['titre'];
-$prix=$cours['prix'];
+$id = $_GET['id'];
+$cours = $courscontroller->getCoursById($_POST['course_id']);
+$titre = $cours['titre'];
+$prix = $cours['prix'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $courseId = $_POST['course_id'];
     $cardNumber = $_POST['card_number'];
@@ -27,11 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-function processPayment($cardNumber, $expiryDate, $cvv) {
+function processPayment($cardNumber, $expiryDate, $cvv)
+{
     // Dummy payment processing logic
     // In real-world scenario, integrate with a payment gateway API
     return true;
-    
 }
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -55,7 +64,7 @@ try {
 
     //Recipients
     $mail->setFrom('aymenfrej7@gmail.com', 'EduPath');
-    $mail->addAddress('aymenfrej1@gmail.com');
+    $mail->addAddress($et['email']);
 
     // Content
     $mail->isHTML(true);
@@ -69,5 +78,3 @@ try {
     echo "Failed to send confirmation email. Mailer Error: {$mail->ErrorInfo}";
 }
 header("Location: coursetudiant.php?id=$id");
-?>
-
