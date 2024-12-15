@@ -1,12 +1,14 @@
 <?php
-class reponse {
+class reponse
+{
     private $idr;
     private $nom_a;
     private $id_rec;
     private $date_r;
     private $contenu;
 
-    public function __construct($idr,$nom_a, $id_rec, $date_r, $contenu) {
+    public function __construct($idr, $nom_a, $id_rec, $date_r, $contenu)
+    {
         $this->idr = $idr;
         $this->nom_a = $nom_a;
         $this->id_rec = $id_rec;
@@ -15,40 +17,49 @@ class reponse {
     }
 
     // Getters
-    public function getId() {
+    public function getId()
+    {
         return $this->idr;
     }
-    public function getNom_a() {
+    public function getNom_a()
+    {
         return $this->nom_a;
     }
-    public function getIdReclamation() {
+    public function getIdReclamation()
+    {
         return $this->id_rec;
     }
 
-    public function getDateR() {
+    public function getDateR()
+    {
         return $this->date_r;
     }
 
-    public function getContenu() {
+    public function getContenu()
+    {
         return $this->contenu;
     }
     // Setters
-    public function setId($idr) {
+    public function setId($idr)
+    {
         $this->idr = $idr;
     }
-    public function setNom_a($nom_a) {
+    public function setNom_a($nom_a)
+    {
         $this->nom_a = $nom_a;
     }
-    public function setIdReclamation($id_rec) {
+    public function setIdReclamation($id_rec)
+    {
         $this->id_rec = $id_rec;
     }
 
-    public function setDateR($date_r) {
+    public function setDateR($date_r)
+    {
         $this->date_r = $date_r;
     }
 
-    public function setContenu($contenu) {
+    public function setContenu($contenu)
+    {
         $this->contenu = $contenu;
     }
 }
-?>

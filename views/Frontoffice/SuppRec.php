@@ -11,4 +11,3 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 } else {
     echo "ID de réclamation non spécifié.";
 }
-?>

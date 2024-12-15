@@ -4,16 +4,16 @@ include '../../controllers/réclamationC.php';
 
 
 $error = "";
-$complaint= null;
+$complaint = null;
 $reclamationController = new ReclamationC();
 
 if (
-    isset($_POST["id"])  && isset($_POST["nom"]) && isset($_POST["date_c"]) && isset($_POST["email"]) && isset($_POST["sujet"])  && isset($_POST["descript"]) && isset($_POST["tel"]) && isset($_POST["statut"]) && isset($_POST["is_visble"])
+    isset($_POST["id"])  && isset($_POST["nom"]) && isset($_POST["date_c"]) && isset($_POST["email"]) && isset($_POST["sujet"])  && isset($_POST["descript"]) && isset($_POST["tel"]) && isset($_POST["statut"]) && isset($_POST["is_visible"])
 ) {
     if (
-        !empty($_POST["nom"]) && !empty($_POST["date_c"]) && !empty($_POST["email"]) && !empty($_POST["sujet"])  && !empty($_POST["descript"]) && !empty($_POST["tel"]) && !empty($_POST["statut"]) && !empty($_POST["is_visble"])
+        !empty($_POST["nom"]) && !empty($_POST["date_c"]) && !empty($_POST["email"]) && !empty($_POST["sujet"])  && !empty($_POST["descript"]) && !empty($_POST["tel"]) && !empty($_POST["statut"]) && !empty($_POST["is_visible"])
     ) {
-        $complaint= new reclamation (
+        $complaint = new reclamation(
             null,
             $_POST['nom'],
             new DateTime($_POST['date_c']),
@@ -22,7 +22,7 @@ if (
             $_POST['descript'],
             $_POST['tel'],
             $_POST['statut'],
-            $_POST['is_visble']
+            $_POST['is_visible']
         );
         //
         $reclamationController->ajouterReclamation($complaint);
@@ -34,20 +34,39 @@ if (
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire de Réclamation</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleRec.css">
     <script src="addRec.js"></script>
+    <style>
+        .header {
+            width: 100%;
+            position: fixed;
+            top: -50px;
+            left: 0;
+            background-color: #f8f9fa;
+            transition: top 0.3s;
+        }
+
+        .header:hover {
+            top: 0;
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
+    <div class="header">
+        <?php include '../components/header.php'; ?>
+    </div>
+    <div class="container">
         <h2>Formulaire de Réclamation</h2>
         <form id="reclamationForm" action="addRec.php" method="post">
             <input type="hidden" id="id" name="id">
             <input type="hidden" id="statut" name="statut" value="en attente">
-            <input type="hidden" id="is_visble" name="is_visble" value="1">
+            <input type="hidden" id="is_visible" name="is_visible" value="1">
             <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" id="nom" name="nom">
@@ -82,4 +101,5 @@ if (
         </form>
     </div>
 </body>
+
 </html>

@@ -6,8 +6,8 @@ class ReclamationC
 {
     public function ajouterReclamation($reclamation)
     {
-        $sql = "INSERT INTO addreclamation (id, nom, date_c, email, sujet, descript, tel, statut, is_visble)
-        VALUES (:id, :nom, :date_c, :email, :sujet, :descript, :tel, :statut,:is_visble)";
+        $sql = "INSERT INTO addreclamation (id, nom, date_c, email, sujet, descript, tel, statut, is_visible)
+        VALUES (:id, :nom, :date_c, :email, :sujet, :descript, :tel, :statut,:is_visible)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -20,7 +20,7 @@ class ReclamationC
                 'descript' => $reclamation->getDescript(),
                 'tel' => $reclamation->getTel(),
                 'statut' => $reclamation->getStatut(),
-                'is_visble' => $reclamation->getIs_visble()
+                'is_visible' => $reclamation->getIs_visible()
             ]);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
@@ -97,6 +97,14 @@ class ReclamationC
         } catch (Exception $e) {
             die('Error: ' . $e->getMessage());
         }
+    }
+    public function listeReclamationsMasquees()
+    {
+        $sql = "SELECT * FROM addreclamation WHERE is_visible = 0";
+        $db = config::getConnexion();
+        $query = $db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
     }
 }
 ?>
