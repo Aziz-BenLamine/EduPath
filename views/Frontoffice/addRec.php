@@ -4,7 +4,7 @@ include '../../controllers/réclamationC.php';
 
 
 $error = "";
-$complaint= null;
+$complaint = null;
 $reclamationController = new ReclamationC();
 
 if (
@@ -13,7 +13,7 @@ if (
     if (
         !empty($_POST["nom"]) && !empty($_POST["date_c"]) && !empty($_POST["email"]) && !empty($_POST["sujet"])  && !empty($_POST["descript"]) && !empty($_POST["tel"]) && !empty($_POST["statut"]) && !empty($_POST["is_visible"])
     ) {
-        $complaint= new reclamation (
+        $complaint = new reclamation(
             null,
             $_POST['nom'],
             new DateTime($_POST['date_c']),
@@ -34,14 +34,15 @@ if (
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire de Réclamation</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleRec.css">
     <script src="addRec.js"></script>
     <style>
-       .header {
+        .header {
             width: 100%;
             position: fixed;
             top: -50px;
@@ -49,16 +50,18 @@ if (
             background-color: #f8f9fa;
             transition: top 0.3s;
         }
+
         .header:hover {
             top: 0;
         }
     </style>
 </head>
+
 <body>
-<div class="header">
+    <div class="header">
         <?php include '../components/header.php'; ?>
     </div>
-<div class="container">
+    <div class="container">
         <h2>Formulaire de Réclamation</h2>
         <form id="reclamationForm" action="addRec.php" method="post">
             <input type="hidden" id="id" name="id">
@@ -98,4 +101,5 @@ if (
         </form>
     </div>
 </body>
+
 </html>

@@ -3,11 +3,7 @@ session_start();
 
 if (isset($_SESSION['username'])) {
   $username = $_SESSION['username'];
-  echo "Welcome, " . htmlspecialchars($username) . "!";
-} else {
-  echo "You are not logged in.";
 }
-var_dump($_SESSION);
 ?>
 
 

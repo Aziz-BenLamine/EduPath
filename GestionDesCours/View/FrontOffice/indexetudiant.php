@@ -51,7 +51,7 @@ if (isset($_GET['search'])) {
                 <div class="course">
                     <h2><?php echo $categorie['titre']; ?></h2>
                     <p><?php echo $categorie['description']; ?></p>
-                    <a class="blue-button" href="coursetudiant.php?id=<?php echo $categorie['id'] ?>">afficher les cours</a>
+                    <a class="blue-button" href="coursetudiant.php?id=<?php echo $categorie['id'] ?>">Afficher les cours</a>
                 </div>
             <?php endforeach; ?>
     </main>

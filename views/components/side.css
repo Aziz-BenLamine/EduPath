@@ -41,8 +41,8 @@
   color: #007bff;
 }
 .sidebar a.active {
-  background-color: #e9ecef;
-  color: #007bff;
+  background-color: #007bff; /* Change this to your desired highlight color */
+  color: white; /* Change this to your desired text color */
 }
 .sidebar a i {
   margin-right: 10px;

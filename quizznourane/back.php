@@ -87,6 +87,10 @@ $questions = $quizController->affichequestion();
                                 <!-- Update Button -->
                                 <form action="update_question.php" method="POST" style="display:inline;">
                                     <input type="hidden" name="idq" value="<?= htmlspecialchars($question['idq']); ?>">
+                                    <input type="hidden" name="question" value="<?= htmlspecialchars($question['question']); ?>">
+                                    <input type="hidden" name="typeq" value="<?= htmlspecialchars($question['typeq']); ?>">
+                                    <input type="hidden" name="id_quiz" value="<?= htmlspecialchars($question['id_quiz']); ?>">
+                                    <input type="hidden" name="numR" value="<?= htmlspecialchars($question['numR']); ?>">
                                     <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                 </form>
                                 <!-- Delete Button -->

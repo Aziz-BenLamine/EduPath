@@ -1,33 +1,9 @@
 <?php
-include('..\quizznourane\model\quizModel.php'); 
+include('..\quizznourane\model\quizModel.php');
 include('..\quizznourane\controleur\quizControler.php');
 
-
-$questionController = new quizs();
-
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
-    $idq = $_GET['idq'];
-
-    // Fetch all questions
-    $questions = $questionController->affichequestion();
-    $question = null;
-
-    foreach ($questions as $q) {
-        if ($q['idq'] == $idq) {
-            $question = $q; // Store the matching question
-            break;
-        }
-    }
-
-    if (!$question) {
-        echo "Question not found.";
-        exit;
-    }
-} elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Ensure all necessary POST data is received
-    if (
-        isset($_POST['idq'], $_POST['question'], $_POST['typeq'], $_POST['id_quiz'], $_POST['numR'])
-    ) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['idq'], $_POST['question'], $_POST['typeq'], $_POST['id_quiz'], $_POST['numR'])) {
         $idq = $_POST['idq'];
         $newQuestion = $_POST['question'];
         $newTypeq = $_POST['typeq'];
@@ -43,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
             ->setNumR($newNumR);
 
         // Update the question in the database
+        $questionController = new quizs();
         $questionController->updatequestion($questionObj, $idq);
 
         // Redirect after successful update
@@ -60,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
             background-color: #f4f4f9;
             padding: 20px;
         }
+
         .form-container {
             max-width: 400px;
             margin: 0 auto;
@@ -78,25 +57,33 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+
         h1 {
             text-align: center;
         }
+
         label {
             font-weight: bold;
         }
-        input, select, textarea, button {
+
+        input,
+        select,
+        textarea,
+        button {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+
         button {
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
@@ -112,9 +99,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
 
             <!-- Question Field -->
             <label for="question">Énoncé :</label>
-            <input type="text" id="question" name="question" 
-                   value="<?= htmlspecialchars($question['question']); ?>" 
-                   placeholder="Entrez la question" required>
+            <input type="text" id="question" name="question"
+                value="<?= htmlspecialchars($question['question']); ?>"
+                placeholder="Entrez la question" required>
 
             <!-- Type of Question Field -->
             <label for="typeq">Type de la Question :</label>
@@ -127,15 +114,15 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
 
             <!-- Quiz ID Field -->
             <label for="id_quiz">ID du Quiz :</label>
-            <input type="text" id="id_quiz" name="id_quiz" 
-                   value="<?= htmlspecialchars($question['id_quiz']); ?>" 
-                   placeholder="Entrez l'ID du quiz" required>
+            <input type="text" id="id_quiz" name="id_quiz"
+                value="<?= htmlspecialchars($question['id_quiz']); ?>"
+                placeholder="Entrez l'ID du quiz" required>
 
             <!-- Reference Number Field -->
             <label for="numR">Numéro Référence :</label>
-            <input type="number" id="numR" name="numR" 
-                   value="<?= htmlspecialchars($question['numR']); ?>" 
-                   placeholder="Entrez le numéro de référence" required>
+            <input type="number" id="numR" name="numR"
+                value="<?= htmlspecialchars($question['numR']); ?>"
+                placeholder="Entrez le numéro de référence" required>
 
             <!-- Submit Button -->
             <button type="submit">Mettre à Jour</button>
@@ -143,28 +130,29 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['idq'])) {
     </div>
 
     <script>
-    function validateForm() {
-        const question = document.getElementById('question').value.trim();
-        const idQuiz = document.getElementById('id_quiz').value.trim();
-        const numR = document.getElementById('numR').value.trim();
+        function validateForm() {
+            const question = document.getElementById('question').value.trim();
+            const idQuiz = document.getElementById('id_quiz').value.trim();
+            const numR = document.getElementById('numR').value.trim();
 
-        if (!question || question.length < 5) {
-            alert("La question doit contenir au moins 5 caractères.");
-            return false;
+            if (!question || question.length < 5) {
+                alert("La question doit contenir au moins 5 caractères.");
+                return false;
+            }
+
+            if (!idQuiz || isNaN(idQuiz)) {
+                alert("L'ID du Quiz doit être un nombre valide.");
+                return false;
+            }
+
+            if (!numR || isNaN(numR) || parseInt(numR) <= 0) {
+                alert("Le numéro de référence doit être un nombre positif.");
+                return false;
+            }
+
+            return true;
         }
-
-        if (!idQuiz || isNaN(idQuiz)) {
-            alert("L'ID du Quiz doit être un nombre valide.");
-            return false;
-        }
-
-        if (!numR || isNaN(numR) || parseInt(numR) <= 0) {
-            alert("Le numéro de référence doit être un nombre positif.");
-            return false;
-        }
-
-        return true;
-    }
     </script>
-</body>
+    </body>
+
 </html>
