@@ -41,7 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $admin = $userController->findAdminByUsernameAndPassword($username, $password);
 
         if ($user) {
-            header("Location: http://localhost/EduPath/");
+            /*header("Location: http://localhost/EduPath/");*/
+            $_SESSION['username'] = $username;
+            header("Location: http://localhost/EduPath/views/Frontoffice/welcomeuser/index.html?username=" . urlencode($username));
             exit;
         } elseif ($admin) {
             header("Location: /template/registerform/views/backoffice/sidebar/sidebar.html");

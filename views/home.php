@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (isset($_SESSION['username'])) {
+  $username = $_SESSION['username'];
+  echo "Welcome, " . htmlspecialchars($username) . "!";
+} else {
+  echo "You are not logged in.";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,7 +21,6 @@
 </head>
 
 <body>
-
   <div class="container">
     <!-- Header -->
     <?php include '/xampp/htdocs/EduPath/views/components/header.php'; ?>
