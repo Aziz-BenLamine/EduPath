@@ -2,15 +2,32 @@
 
 require_once __DIR__ . '/../models/User.php';
 
-class UserController {
+class UserController
+{
     private $pdo;
 
-    public function __construct(PDO $pdo) {
+    public function __construct(PDO $pdo)
+    {
         $this->pdo = $pdo;
     }
 
+    public function getUserByUsername($username)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $user;
+        } catch (PDOException $e) {
+            // Handle the exception
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
     // Fetch a user by ID
-    public function getUserById($id) {
+    public function getUserById($id)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
             $stmt->execute([':id' => $id]);
@@ -21,7 +38,8 @@ class UserController {
     }
 
     // Fetch an admin by ID
-    public function getAdminById($id) {
+    public function getAdminById($id)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM admins WHERE id = :id");
             $stmt->execute([':id' => $id]);
@@ -32,7 +50,8 @@ class UserController {
     }
 
     // Count total users
-    public function countUsers() {
+    public function countUsers()
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT COUNT(*) as total FROM users");
             $stmt->execute();
@@ -44,7 +63,8 @@ class UserController {
     }
 
     // Count total admins
-    public function countAdmins() {
+    public function countAdmins()
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT COUNT(*) as total FROM admins");
             $stmt->execute();
@@ -56,7 +76,8 @@ class UserController {
     }
 
     // Delete a user by ID
-    public function deleteUser($userId) {
+    public function deleteUser($userId)
+    {
         try {
             $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = :id");
             $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
@@ -68,7 +89,8 @@ class UserController {
     }
 
     // Delete an admin by ID
-    public function deleteAdmin($adminId) {
+    public function deleteAdmin($adminId)
+    {
         try {
             $stmt = $this->pdo->prepare("DELETE FROM admins WHERE id = :id");
             $stmt->bindParam(':id', $adminId, PDO::PARAM_INT);
@@ -80,7 +102,8 @@ class UserController {
     }
 
     // Update a user's details
-    public function updateUser($userId, $username, $email) {
+    public function updateUser($userId, $username, $email)
+    {
         try {
             $stmt = $this->pdo->prepare("UPDATE users SET username = :username, email = :email WHERE id = :id");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -94,7 +117,8 @@ class UserController {
     }
 
     // Update an admin's details
-    public function updateAdmin($adminId, $username, $email) {
+    public function updateAdmin($adminId, $username, $email)
+    {
         try {
             $stmt = $this->pdo->prepare("UPDATE admins SET username = :username, email = :email WHERE id = :id");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -108,7 +132,8 @@ class UserController {
     }
 
     // Get all users
-    public function getAllUsers() {
+    public function getAllUsers()
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT id, username, email FROM users");
             $stmt->execute();
@@ -119,7 +144,8 @@ class UserController {
     }
 
     // Get all admins
-    public function getAllAdmins() {
+    public function getAllAdmins()
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT id, username, email FROM admins");
             $stmt->execute();
@@ -130,7 +156,8 @@ class UserController {
     }
 
     // Check if a user exists
-    public function userExists($username, $email) {
+    public function userExists($username, $email)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username OR email = :email");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -143,7 +170,8 @@ class UserController {
     }
 
     // Check if an admin exists
-    public function adminExists($username, $email) {
+    public function adminExists($username, $email)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM admins WHERE username = :username OR email = :email");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -156,7 +184,8 @@ class UserController {
     }
 
     // Create a new user
-    public function createUser($username, $email, $password) {
+    public function createUser($username, $email, $password)
+    {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -170,7 +199,8 @@ class UserController {
     }
 
     // Create a new admin
-    public function createAdmin($username, $email, $password) {
+    public function createAdmin($username, $email, $password)
+    {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO admins (username, email, password) VALUES (:username, :email, :password)");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -184,7 +214,8 @@ class UserController {
     }
 
     // Find a user by username and password
-    public function findUserByUsernameAndPassword($username, $password) {
+    public function findUserByUsernameAndPassword($username, $password)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
@@ -197,7 +228,8 @@ class UserController {
     }
 
     // Find an admin by username and password
-    public function findAdminByUsernameAndPassword($username, $password) {
+    public function findAdminByUsernameAndPassword($username, $password)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM admins WHERE username = :username AND password = :password");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);

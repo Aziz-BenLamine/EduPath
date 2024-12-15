@@ -7,6 +7,7 @@ if (isset($_SESSION['username'])) {
 } else {
   echo "You are not logged in.";
 }
+var_dump($_SESSION);
 ?>
 
 

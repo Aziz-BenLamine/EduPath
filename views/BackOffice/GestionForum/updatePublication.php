@@ -7,5 +7,5 @@ $_POST['id'] = $_GET['id'];
 
 $publicationC->updatePublication($_POST);
 
-header("Location: /Edupath/views/BackOffice/forumAdmin.php");
+header("Location: /Edupath/views/BackOffice/GestionForum/forumAdmin.php");
 exit();

@@ -22,7 +22,6 @@ $aiResponse = $publicationC->getGeminiResponse($publication['contenu']);
 $reponseC = new reponseC();
 $reponses = $reponseC->listreponses($id_publication);
 
-
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +63,7 @@ $reponses = $reponseC->listreponses($id_publication);
                     <?php foreach ($reponses as $reponse): ?>
                         <li>
                             <div class="name-date">
-                                <h4><?= $reponseC->creePar($reponse['cree_par'])['nom'] . ' ' . $reponseC->creePar($reponse['cree_par'])['prenom'] ?></h4>
+                                <h4><?= $reponseC->creePar($reponse['cree_par'])['username'] ?></h4>
                                 <div><?= $reponseC->timeAgo($reponse['date_creation']) ?></div>
                             </div>
                             <p><?= $reponse['contenu'] ?></p>

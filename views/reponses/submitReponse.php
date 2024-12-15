@@ -1,12 +1,13 @@
 <?php
 require_once "/xampp/htdocs/EduPath/controllers/reponseC.php";
 require_once "/xampp/htdocs/EduPath/models/reponse.php";
+session_start();
+$user_id = $_SESSION['id'];
 
-
-if ($_SERVER['REQUEST_METHOD'] = 'POST'){
+if ($_SERVER['REQUEST_METHOD'] = 'POST') {
     $contenu = $_POST['response'];
     $date_creation = date("Y-m-d H:i:s");
-    $cree_par = "1";
+    $cree_par = $user_id;
     $publication = $_GET['id_publication'];
     $reponse = new reponse(null, $contenu, $date_creation, $cree_par, $publication);
     $reponseC = new reponseC();
@@ -19,6 +20,3 @@ if ($_SERVER['REQUEST_METHOD'] = 'POST'){
     header("Location: /EduPath/views/reponses/reponsesView.php?id=$publication");
     exit();
 }
-
-
-?>

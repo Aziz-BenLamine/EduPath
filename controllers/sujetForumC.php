@@ -12,6 +12,13 @@ class sujetForumC
         $this->pdo = config::getConnexion();
     }
 
+    public function creePar($id)
+    {
+        $stmt = $this->pdo->prepare("SELECT username FROM users WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function sujetTable()
     {
         $stmt = $this->pdo->query("SELECT * FROM sujetforum");

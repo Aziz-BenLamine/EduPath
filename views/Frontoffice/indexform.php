@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user) {
             /*header("Location: http://localhost/EduPath/");*/
             $_SESSION['username'] = $username;
+            $_SESSION['id'] = $userController->getUserByUsername($username)['id'];
             header("Location: http://localhost/EduPath/views/Frontoffice/welcomeuser/index.html?username=" . urlencode($username));
             exit;
         } elseif ($admin) {

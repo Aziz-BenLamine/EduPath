@@ -18,7 +18,7 @@
       <a href="/Edupath/GestionDesCours/View/FrontOffice/indexetudiant.php">Cours</a>
       <a href="..\EduPath\quizznourane\view\index.php">Quiz</a>
       <a href="/Edupath/views/sujets/forum_home.php">Forum</a>
-      <a href="#">Enseigner</a>
+      <a href="#">Tuteur</a>
       <div class="dropdown">
         <button class="dropbtn">Réclamation</button>
         <div class="dropdown-content">
